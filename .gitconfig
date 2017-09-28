@@ -21,3 +21,5 @@
   ci = commit
   st = status -sb
   br = branch
+[core]
+  pager = less -x1,5
