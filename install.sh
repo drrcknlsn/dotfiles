@@ -9,3 +9,5 @@ git clone https://github.com/itchyny/lightline.vim.git
 git clone https://github.com/romainl/Apprentice.git
 
 ln -sv ~/.dotfiles/.vimrc ~/.vimrc
+
+ln -sv ~/.dotfiles/.gitconfig ~/.gitconfig
