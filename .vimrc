@@ -1,13 +1,22 @@
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
+runtime macros/matchit.vim
+
 set nocompatible
+
+" Disable arrow keys to break the habit and reinforce hjkl navigation
+noremap <up> <nop>
+noremap <down> <nop>
+noremap <left> <nop>
+noremap <right> <nop>
 
 set t_Co=256
 
 syntax on
 set background=dark
 colorscheme apprentice
+highlight IncSearch ctermbg=229
 highlight MatchParen ctermbg=black ctermfg=white
 set cul
 
@@ -59,9 +68,19 @@ set autoindent
 set smartindent
 set cindent " ?
 
+" Add indentation shortcuts
+nnoremap <tab> >>
+nnoremap <s-tab> <<
+vnoremap <tab> >gv
+vnoremap <s-tab> <gv
+
 " Display whitespace and special characters
 set list
+" eol:¬
 set listchars=tab:→\ ,trail:·,nbsp:·,extends:…,precedes:…
+
+" Highlight eol/extends/precedes
+highlight NonText ctermfg=black
 
 " Highlight unwanted whitespace
 highlight SpecialKey ctermbg=black ctermfg=red
@@ -96,9 +115,20 @@ autocmd BufNewFile *.xml 0r ~/.vim/skeleton.xml | normal Gdd
 let g:closetag_html_style=1
 
 " Tab characters use error highlighting
-match ErrorMsg /\t\+/
+"match ErrorMsg /\t\+/
 
-" Lightline
+" Long lines use error highlighting
+"match WarningMsg /\%<121v.\%>80v/
+match ErrorMsg /\%>120v.\+/
+"2345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
+"                                                                              ^                                       ^
+"                                                                             80                                     120
+
+"""""""""""""""
+"             "
+"  Lightline  "
+"             "
+"""""""""""""""
 
 let g:lightline = {
     \ 'colorscheme': 'wombat',
@@ -136,32 +166,50 @@ let g:lightline = {
 "call NERDTreeHighlightFile('js', 'Red', 'none')
 "call NERDTreeHighlightFile('php', 'Magenta', 'none')
 
-" Syntastic
+"""""""""""""""
+"             "
+"  Syntastic  "
+"             "
+"""""""""""""""
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_quiet_messages = {'level': 'warnings'}
+"let g:syntastic_quiet_messages = {'level': 'warnings'}
+let g:syntastic_auto_jump = 1
+let g:syntastic_aggregate_errors = 1
 
-let g:syntastic_error_symbol = "X" " U2717
-let g:syntastic_warning_symbol = "!" " U26A0
+let g:syntastic_error_symbol = "✗" " \u2717
+let g:syntastic_warning_symbol = "∆" " \u26a0
 
-let g:syntastic_style_error_symbol = "SE"
-let g:syntastic_style_warning_symbol = "SW"
+let g:syntastic_style_error_symbol = "✗" " \u2717
+let g:syntastic_style_warning_symbol = "∆" " \u26a0
+
+highlight SyntasticErrorSign ctermbg=red ctermfg=black
+highlight SyntasticStyleErrorSign ctermbg=black ctermfg=red
+
+highlight SyntasticWarningSign ctermbg=yellow ctermfg=black
+highlight SyntasticStyleWarningSign ctermbg=black ctermfg=yellow
 
 " JavaScript
 
-let g:syntastic_javascript_checkers = ['jscs', 'jshint']
+let g:syntastic_javascript_checkers = ['eslint']
 
 " PHP
 
 let g:syntastic_php_checkers = ['php', 'phpcs']
-
-let g:PHP_vintage_case_default_indent = 1 " not syntastic?
 
 " TypeScript
 
 let g:syntastic_typescript_checkers = ['tsc', 'tslint']
 
 let g:syntastic_typescript_tsc_args = "--target ES6 --noImplicitAny"
+
+"""""""""""""""""""
+"                 "
+"  MISCELLANEOUS  "
+"                 "
+"""""""""""""""""""
+
+let g:PHP_vintage_case_default_indent = 1
