@@ -7,9 +7,13 @@ set nocompatible
 
 " Disable arrow keys to break the habit and reinforce hjkl navigation
 noremap <up> <nop>
+inoremap <up> <nop>
 noremap <down> <nop>
+inoremap <down> <nop>
 noremap <left> <nop>
+inoremap <left> <nop>
 noremap <right> <nop>
+inoremap <right> <nop>
 
 set t_Co=256
 
@@ -19,6 +23,9 @@ colorscheme apprentice
 highlight IncSearch ctermbg=229
 highlight MatchParen ctermbg=black ctermfg=white
 set cul
+
+set showcmd
+let mapleader = " "
 
 " Set character encoding to UTF-8 with no BOM
 set encoding=utf-8
@@ -63,7 +70,7 @@ set smarttab
 
 set shiftwidth=2
 set tabstop=2
-
+set softtabstop=2
 set autoindent
 set smartindent
 set cindent " ?
@@ -76,8 +83,9 @@ vnoremap <s-tab> <gv
 
 " Display whitespace and special characters
 set list
-" eol:¬
-set listchars=tab:→\ ,trail:·,nbsp:·,extends:…,precedes:…
+" eol:¬,
+" tab:→\ ,
+set listchars=tab:▸\ ,trail:·,nbsp:·,extends:…,precedes:…
 
 " Highlight eol/extends/precedes
 highlight NonText ctermfg=black
