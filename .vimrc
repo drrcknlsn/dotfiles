@@ -180,8 +180,9 @@ let g:lightline = {
 "             "
 """""""""""""""
 
-nnoremap <leader>n :lnext
-nnoremap <leader>p :lprevious
+nnoremap <leader>r :SyntasticReset<cr>
+nnoremap <leader>n :lnext<cr>
+nnoremap <leader>p :lprevious<cr>
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
