@@ -127,7 +127,7 @@ let g:closetag_html_style=1
 
 " Long lines use error highlighting
 "match WarningMsg /\%<121v.\%>80v/
-match ErrorMsg /\%>120v.\+/
+"match ErrorMsg /\%>120v.\+/
 "2345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
 "                                                                              ^                                       ^
 "                                                                             80                                     120
