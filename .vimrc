@@ -47,7 +47,7 @@ set scrolloff=5
 set ruler
 
 " Shows line numbers
-"set number
+set number
 
 " Highlight the line/column of the cursor
 set cursorline
@@ -216,7 +216,6 @@ let g:syntastic_php_checkers = ['php', 'phpcs']
 " TypeScript
 
 let g:syntastic_typescript_checkers = ['tsc', 'tslint']
-
 let g:syntastic_typescript_tsc_args = "--target ES6 --noImplicitAny"
 
 """""""""""""""""""
@@ -226,3 +225,9 @@ let g:syntastic_typescript_tsc_args = "--target ES6 --noImplicitAny"
 """""""""""""""""""
 
 let g:PHP_vintage_case_default_indent = 1
+
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '∆'
+highlight ALEErrorSign ctermbg=red ctermfg=black
+highlight ALEWarningSign ctermbg=yellow ctermfg=black
