@@ -5,8 +5,9 @@
   },
   "rules": {
     "comma-dangle": "off",
-    "no-constant-condition": {
+    "no-constant-condition": ["error", {
       "checkLoops": false
-    }
+    }],
+    "no-plusplus": "off"
   }
 }
