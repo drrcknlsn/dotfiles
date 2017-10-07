@@ -109,6 +109,7 @@ set noswapfile
 " Map paste mode, which disables auto-indentation and such
 set pastetoggle=[12~
 
+autocmd BufNewFile,BufRead .eslintrc set ft=json
 autocmd BufNewFile,BufRead .jscsrc set ft=json
 autocmd BufNewFile,BufRead .jshintrc set ft=json
 
