@@ -24,4 +24,4 @@
 [core]
   pager = less -x1,5
 [push]
-  default = current
+  default = simple
