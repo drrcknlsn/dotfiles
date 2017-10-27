@@ -20,3 +20,4 @@ if [ -f ~/.bashrc ]; then
 fi
 
 ln -sv ~/.dotfiles/.bashrc ~/.bashrc
+. ~/.bashrc
