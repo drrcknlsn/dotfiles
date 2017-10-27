@@ -14,3 +14,9 @@ git clone https://github.com/w0rp/ale.git
 ln -sv ~/.dotfiles/.vimrc ~/.vimrc
 
 ln -sv ~/.dotfiles/.gitconfig ~/.gitconfig
+
+if [ -f ~/.bashrc ]; then
+  mv ~/.bashrc ~/.bashrc.bak
+fi
+
+ln -sv ~/.dotfiles/.bashrc ~/.bashrc
