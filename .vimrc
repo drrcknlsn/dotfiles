@@ -15,6 +15,9 @@ inoremap <left> <nop>
 noremap <right> <nop>
 inoremap <right> <nop>
 
+" Fix backspace key on some systems
+set backspace=indent,eol,start
+
 set t_Co=256
 
 syntax on
