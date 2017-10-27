@@ -15,6 +15,12 @@ ln -sv ~/.dotfiles/.vimrc ~/.vimrc
 
 ln -sv ~/.dotfiles/.gitconfig ~/.gitconfig
 
+if [ -f ~/.bash_profile ]; then
+  mv ~/.bash_profile ~/.bash_profile.bak
+fi
+
+ln -sv ~/.dotfiles/.bash_profile ~/.bash_profile
+
 if [ -f ~/.bashrc ]; then
   mv ~/.bashrc ~/.bashrc.bak
 fi
