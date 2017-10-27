@@ -11,3 +11,5 @@ fi
 # User specific aliases and functions
 
 export PS1="\[\e[0m\]\[\e[1;32m\][\[\e[1;37m\]\u\[\e[1;30m\]@\[\e[0m\]\h \[\e[1;30m\]\W\[\e[1;32m\]]\\$\[\e[0m\] "
+
+export LS_OPTIONS='--color=auto -A -b'
