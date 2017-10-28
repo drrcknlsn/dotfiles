@@ -1,6 +1,8 @@
-hardstatus alwayslastline
+# Use a login shell
+shell -$SHELL
 
-#
+# Setup the status line
+hardstatus alwayslastline
 hardstatus string '%{= kK}[ %{B}%H%? %1`%? %{K}][%= %{= kW}%-w%{+b BW} %n*%t%?(%u)%? %{-}%+w %=%{K}][ %{B}%m/%d %{W}%C%a %{K}]'
 #hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W}%c %{g}]'
 
