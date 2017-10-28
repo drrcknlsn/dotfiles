@@ -1,13 +1,14 @@
-[user]
-  email = derrick@track5media.com
-  name = Derrick Nelson
+[include]
+  path = ~/.gitconfig.local
 [color]
   ui = auto
 [color "diff"]
   meta = cyan bold
+  commit = green bold
   frag = yellow bold
   old = red bold
   new = green bold
+  whitespace = red reverse
 [color "branch"]
   current = yellow reverse
   local = yellow
