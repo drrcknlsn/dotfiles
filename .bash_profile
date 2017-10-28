@@ -57,8 +57,8 @@ function set_prompt() {
   export PS1
 }
 
-set_prompt
-unset set_prompt
+PROMPT_COMMAND=set_prompt
+export PROMPT_COMMAND
 
 LS_OPTIONS='--color=auto -A -b'
 
