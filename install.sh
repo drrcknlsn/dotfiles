@@ -32,26 +32,33 @@ if [ ! -d ~/.vim/bundle/ale ]; then
 fi
 
 if [ ! -L ~/.vimrc ]; then
+  [ -f ~/.vimrc ] && mv ~/.vimrc ~/.vimrc.bak
   ln -sv ~/.dotfiles/.vimrc ~/.vimrc
 fi
 
 if [ ! -L ~/.gitconfig ]; then
-  mv ~/.gitconfig ~/.gitconfig.bak
+  [ -f ~/.gitconfig ] && mv ~/.gitconfig ~/.gitconfig.bak
   ln -sv ~/.dotfiles/.gitconfig ~/.gitconfig
 fi
 
 if [ ! -L ~/.bash_profile ]; then
-  mv ~/.bash_profile ~/.bash_profile.bak
+  [ -f ~/.bash_profile ] && mv ~/.bash_profile ~/.bash_profile.bak
   ln -sv ~/.dotfiles/.bash_profile ~/.bash_profile
   . ~/.bash_profile
 fi
 
 if [ ! -L ~/.bashrc ]; then
-  mv ~/.bashrc ~/.bashrc.bak
+  [ -f ~/.bashrc ] && mv ~/.bashrc ~/.bashrc.bak
   ln -sv ~/.dotfiles/.bashrc ~/.bashrc
   . ~/.bashrc
 fi
 
 if [ ! -L ~/.screenrc ]; then
+  [ -f ~/.screenrc ] && mv ~/.screenrc ~/.screenrc.bak
   ln -sv ~/.dotfiles/.screenrc ~/.screenrc
+fi
+
+if [ ! -L ~/.eslintrc ]; then
+  [ -f ~/.eslintrc ] && mv ~/.eslintrc ~/.eslintrc.bak
+  ln -sv ~/.dotfiles/.eslintrc ~/.eslintrc
 fi
