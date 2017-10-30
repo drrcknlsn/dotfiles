@@ -65,4 +65,4 @@ LS_OPTIONS='--color=auto -A -b'
 export LS_OPTIONS
 
 # Automatically start/resume screen on login
-[ -z "$STY" ] && screen -R
+[ -z "$STY" ] && screen -U -R
