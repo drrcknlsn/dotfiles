@@ -84,6 +84,10 @@ nnoremap <s-tab> <<
 vnoremap <tab> >gv
 vnoremap <s-tab> <gv
 
+" Use permanent 'very magic' mode for regexes
+nnoremap / /\v
+vnoremap / /\v
+
 " Display whitespace and special characters
 set list
 " eol:¬,
