@@ -146,9 +146,24 @@ let g:lightline = {
     \ 'colorscheme': 'wombat',
     \ 'active': {
     \   'left': [['mode', 'paste'], ['filename']],
-    \   'right': [['syntastic', 'lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype']]
+    \   'right': [['linter_errors', 'linter_warnings', 'linter_ok'], ['syntastic', 'lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype']]
     \ }
     \ }
+
+let g:lightline.component_expand = {
+  \ 'linter_warnings': 'lightline#ale#warnings',
+  \ 'linter_errors': 'lightline#ale#errors',
+  \ 'linter_ok': 'lightline#ale#ok'
+  \ }
+
+let g:lightline.component_type = {
+  \ 'linter_warnings': 'warning',
+  \ 'linter_errors': 'error'
+  \ }
+
+let g:lightline#ale#indicator_warnings = '∆'
+let g:lightline#ale#indicator_errors = '✗'
+let g:lightline#ale#indicator_ok = '✓'
 
 " The NERD Tree
 

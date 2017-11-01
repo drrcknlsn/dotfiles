@@ -31,6 +31,10 @@ if [ ! -d ~/.vim/bundle/ale ]; then
   git clone https://github.com/w0rp/ale.git
 fi
 
+if [ ! -d ~/.vim/bundle/lightline-ale ]; then
+  git clone https://github.com/maximbaz/lightline-ale.git
+fi
+
 if [ ! -L ~/.vimrc ]; then
   [ -f ~/.vimrc ] && mv ~/.vimrc ~/.vimrc.bak
   ln -sv ~/.dotfiles/.vimrc ~/.vimrc
