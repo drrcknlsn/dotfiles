@@ -252,6 +252,6 @@ highlight ALEWarningSign ctermbg=yellow ctermfg=black
 
 let g:ale_php_phpcs_standard = '~/.dotfiles/phpcs/personal.xml'
 
-if filereadable('~/.vimrc.local')
+if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local
 endif
