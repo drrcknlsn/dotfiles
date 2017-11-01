@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="Work" namespace="Drrcknlsn\CS\Standard">
+  <description>My work coding standard</description>
+  <rule ref="./personal.xml">
+    <exclude name="Generic.WhiteSpace.DisallowTabIndent.TabsUsed" />
+  </rule>
+</ruleset>

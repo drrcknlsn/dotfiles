@@ -249,3 +249,9 @@ let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '∆'
 highlight ALEErrorSign ctermbg=red ctermfg=black
 highlight ALEWarningSign ctermbg=yellow ctermfg=black
+
+let g:ale_php_phpcs_standard = '~/.dotfiles/phpcs/personal.xml'
+
+if filereadable('~/.vimrc.local')
+  source ~/.vimrc.local
+endif
