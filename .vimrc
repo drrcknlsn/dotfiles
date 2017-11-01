@@ -97,9 +97,19 @@ highlight NonText ctermfg=black
 highlight SpecialKey ctermbg=black ctermfg=red
 
 " Remove unwanted whitespace on save
-autocmd BufWritePre * :%s/\s\+$//e
-autocmd BufWritePre * :%s/\n\{3,}/\r\r/e
-autocmd BufWritePre * retab
+"autocmd BufWritePre * :%s/\s\+$//e
+"autocmd BufWritePre * :%s/\n\{3,}/\r\r/e
+"autocmd BufWritePre * retab
+function! FixWhitespace()
+  " Trim trailing whitespace
+  :%s/\s\+$//e
+  " Condense multiple blank lines to a single blank line
+  :%s/\n\{3,}/\r\r/e
+  " Fix indentation
+  retab
+endfunction
+
+nnoremap <leader>w :call FixWhitespace()<cr>
 
 " Don't wrap long lines
 "set nowrap
