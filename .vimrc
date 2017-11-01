@@ -17,10 +17,10 @@ inoremap <right> <nop>
 
 " Quickly move lines and blocks up and down
 nnoremap <S-j> :m+<cr>==
-inoremap <S-j> <esc>:m+<cr>==gi
+"inoremap <S-j> <esc>:m+<cr>==gi
 vnoremap <S-j> :m'>+<cr>gv=gv
 nnoremap <S-k> :m-2<cr>==
-inoremap <S-k> <esc>:m-2<cr>==gi
+"inoremap <S-k> <esc>:m-2<cr>==gi
 vnoremap <S-k> :m-2<cr>gv=gv
 
 " Fix backspace key on some systems
