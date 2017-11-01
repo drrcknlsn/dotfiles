@@ -133,6 +133,7 @@ set noswapfile
 " Map paste mode, which disables auto-indentation and such
 set pastetoggle=[12~
 
+" Help with file type recognition
 autocmd BufNewFile,BufRead .eslintrc set ft=json
 autocmd BufNewFile,BufRead .jscsrc set ft=json
 autocmd BufNewFile,BufRead .jshintrc set ft=json
@@ -141,10 +142,15 @@ autocmd BufNewFile,BufRead *.phtml set ft=php sw=2 ts=2
 
 autocmd FileType php set sw=4 ts=4
 
+" Assign skeleton files for new buffers
 autocmd BufNewFile *.html 0r ~/.dotfiles/vim/skeleton/skeleton.html | normal Gdd
 autocmd BufNewFile *.php 0r ~/.dotfiles/vim/skeleton/skeleton.php | normal Gdd
 autocmd BufNewFile *.xml 0r ~/.dotfiles/vim/skeleton/skeleton.xml | normal Gdd
 
+" Jump to last position, if possible
+autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+
+" ?
 let g:closetag_html_style=1
 
 " Tab characters use error highlighting
