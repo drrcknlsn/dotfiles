@@ -91,6 +91,9 @@ nnoremap <s-tab> <<
 vnoremap <tab> >gv
 vnoremap <s-tab> <gv
 
+" Make Y work like C and D
+nnoremap Y y$
+
 " Use permanent 'very magic' mode for regexes
 nnoremap / /\v
 vnoremap / /\v
