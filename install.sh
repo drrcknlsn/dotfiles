@@ -27,6 +27,10 @@ if [ ! -d ~/.vim/bundle/vim-surround ]; then
   git clone https://github.com/tpope/vim-surround.git
 fi
 
+if [ ! -d ~/.vim/bundle/vim-repeat ]; then
+  git clone https://github.com/tpope/vim-repeat.git
+fi
+
 if [ ! -d ~/.vim/bundle/ale ]; then
   git clone https://github.com/w0rp/ale.git
 fi
