@@ -43,6 +43,10 @@ if [ ! -d ~/.vim/bundle/emmet-vim ]; then
   git clone https://github.com/mattn/emmet-vim.git
 fi
 
+if [ ! -d ~/.vim/bundle/nerdcommenter ]; then
+  git clone https://github.com/scrooloose/nerdcommenter.git
+fi
+
 if [ ! -L ~/.vimrc ]; then
   [ -f ~/.vimrc ] && mv ~/.vimrc ~/.vimrc.bak
   ln -sv ~/.dotfiles/.vimrc ~/.vimrc
