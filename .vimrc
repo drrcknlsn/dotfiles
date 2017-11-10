@@ -144,6 +144,7 @@ autocmd BufNewFile,BufRead .jshintrc set ft=json
 autocmd BufNewFile,BufRead *.phtml set ft=php sw=2 ts=2
 
 autocmd FileType php set sw=4 ts=4
+autocmd FileType blade set sw=2 ts=2
 
 " Assign skeleton files for new buffers
 autocmd BufNewFile *.html 0r ~/.dotfiles/vim/skeleton/skeleton.html | normal Gdd
