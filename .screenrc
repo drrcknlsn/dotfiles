@@ -9,6 +9,9 @@ hardstatus string '%{= kK}[ %{B}%H%? %1`%? %{K}][%= %{= kW}%-w%{+b BW} %n*%t%?(%
 # Turn welcome message off
 startup_message off
 
+# Prevent annoying UTMP logging messages
+deflogin off
+
 # Fix residual text after exiting vim
 altscreen on
 
