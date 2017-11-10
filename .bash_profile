@@ -50,7 +50,7 @@ function set_prompt() {
   PS1+="\[$bblack\]@"
   PS1+="\[$white\]\h "
   PS1+="\[$bblack\]\W"
-  PS1+="\[\$(prompt_git \"$bcyan\" \"$bred\")"
+  PS1+="\$(prompt_git \"$bcyan\" \"$bred\")"
   PS1+="\[$bgreen\]]\\$"
   PS1+="\[$reset\] "
 
