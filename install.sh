@@ -47,6 +47,10 @@ if [ ! -d ~/.vim/bundle/nerdcommenter ]; then
   git clone https://github.com/scrooloose/nerdcommenter.git
 fi
 
+if [ ! -d ~/.vim/bundle/PHP-Indenting-For-VIm ]; then
+  git clone https://github.com/2072/PHP-Indenting-for-VIm.git
+fi
+
 if [ ! -L ~/.vimrc ]; then
   [ -f ~/.vimrc ] && mv ~/.vimrc ~/.vimrc.bak
   ln -sv ~/.dotfiles/.vimrc ~/.vimrc
