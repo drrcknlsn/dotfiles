@@ -5,6 +5,8 @@ runtime macros/matchit.vim
 
 set nocompatible
 
+let mapleader = " "
+
 " Disable arrow keys to break the habit and reinforce hjkl navigation
 noremap <up> <nop>
 inoremap <up> <nop>
@@ -15,13 +17,33 @@ inoremap <left> <nop>
 noremap <right> <nop>
 inoremap <right> <nop>
 
+" Make j/k work visually for wrapped lines by default
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+
+" Easier window navigation
+"map <C-j> <C-W>j
+"map <C-k> <C-W>k
+"map <C-h> <C-W>h
+"map <C-l> <C-W>l
+map <leader>j <C-W>j
+map <leader>k <C-W>k
+map <leader>h <C-W>h
+map <leader>l <C-W>l
+
 " Quickly move lines and blocks up and down
 nnoremap <S-j> :m+<cr>==
-"inoremap <S-j> <esc>:m+<cr>==gi
-vnoremap <S-j> :m'>+<cr>gv=gv
 nnoremap <S-k> :m-2<cr>==
-"inoremap <S-k> <esc>:m-2<cr>==gi
+vnoremap <S-j> :m'>+<cr>gv=gv
 vnoremap <S-k> :m-2<cr>gv=gv
+
+" No bells
+set noerrorbells
+set novisualbell
+"set t_vb=
+"set tm=500
 
 " Fix backspace key on some systems
 set backspace=indent,eol,start
@@ -35,7 +57,6 @@ highlight IncSearch ctermbg=229
 highlight MatchParen ctermbg=black ctermfg=white
 
 set showcmd
-let mapleader = " "
 
 " Set character encoding to UTF-8 with no BOM
 set encoding=utf-8
@@ -43,6 +64,7 @@ set fileencoding=utf-8
 set termencoding=utf-8
 set nobomb
 
+" Set the preferred/supported EOL styles
 set fileformat=unix
 set fileformats=unix,mac,dos
 
@@ -84,6 +106,9 @@ set softtabstop=2
 set autoindent
 set smartindent
 set cindent " ?
+
+" Only redraw when necessary
+set lazyredraw
 
 " Add indentation shortcuts
 nnoremap <tab> >>
