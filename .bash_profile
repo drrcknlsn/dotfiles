@@ -64,5 +64,8 @@ LS_OPTIONS='--color=auto -A -b'
 
 export LS_OPTIONS
 
+EDITOR=$(which vim)
+export EDITOR
+
 # Automatically start/resume screen on login
 [ -z "$STY" ] && screen -U -R
