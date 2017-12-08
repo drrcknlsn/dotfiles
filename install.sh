@@ -51,6 +51,13 @@ if [ ! -d ~/.vim/bundle/PHP-Indenting-for-VIm ]; then
   git clone https://github.com/2072/PHP-Indenting-for-VIm.git
 fi
 
+if [ ! -d ~/.vim/bundle/phpcd.vim ]; then
+  git clone https://github.com/lvht/phpcd.vim.git
+  cd ~/.vim/bundle/phpcd.vim
+  composer install
+  cd ~/.vim/bundle
+fi
+
 if [ ! -L ~/.vimrc ]; then
   [ -f ~/.vimrc ] && mv ~/.vimrc ~/.vimrc.bak
   ln -sv ~/.dotfiles/.vimrc ~/.vimrc
