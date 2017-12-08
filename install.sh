@@ -58,6 +58,10 @@ if [ ! -d ~/.vim/bundle/phpcd.vim ]; then
   cd ~/.vim/bundle
 fi
 
+if [ ! -d ~/.vim/bundle/vim-easymotion ]; then
+  git clone https://github.com/easymotion/vim-easymotion.git
+fi
+
 if [ ! -L ~/.vimrc ]; then
   [ -f ~/.vimrc ] && mv ~/.vimrc ~/.vimrc.bak
   ln -sv ~/.dotfiles/.vimrc ~/.vimrc
