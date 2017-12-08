@@ -223,16 +223,20 @@ let g:lightline#ale#indicator_ok = '✓'
 
 " The NERD Tree
 
-"autocmd vimenter * NERDTree
-"autocmd vimenter * wincmd r
-"autocmd vimenter * wincmd p
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" Start NERDTree when vim starts up
+autocmd vimenter * NERDTree
 
-"highlight Directory ctermfg=blue
+" Focus the real buffer
+autocmd vimenter * wincmd p
+
+" Close vim if NERDTree is the only open buffer
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+highlight Directory ctermfg=blue
 
 "function! NERDTreeHighlightFile(extension, fg, bg)
-" exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg
-" exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+ "exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg
+ "exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 "endfunction
 
 "call NERDTreeHighlightFile('jade', 'green', 'none')
