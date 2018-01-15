@@ -221,7 +221,11 @@ let g:lightline#ale#indicator_warnings = '∆'
 let g:lightline#ale#indicator_errors = '✗'
 let g:lightline#ale#indicator_ok = '✓'
 
-" The NERD Tree
+"""""""""""""""""""""""""
+"                       "
+"  scrooloose/nerdtree  "
+"                       "
+"""""""""""""""""""""""""
 
 " Start NERDTree when vim starts up
 autocmd vimenter * NERDTree
@@ -296,13 +300,20 @@ let g:syntastic_php_checkers = ['php', 'phpcs']
 let g:syntastic_typescript_checkers = ['tsc', 'tslint']
 let g:syntastic_typescript_tsc_args = "--target ES6 --noImplicitAny"
 
-"""""""""""""""""""
-"                 "
-"  MISCELLANEOUS  "
-"                 "
-"""""""""""""""""""
+""""""""""""""""""""""""""""""""
+"                              "
+"  2072/PHP-Indenting-for-VIm  "
+"                              "
+""""""""""""""""""""""""""""""""
 
 let g:PHP_vintage_case_default_indent = 1
+let g:PHP_noArrowMatching = 1
+
+""""""""""""""
+"            "
+"  w0rp/ale  "
+"            "
+""""""""""""""
 
 let g:ale_sign_column_always = 1
 let g:ale_sign_error = '✗'
@@ -311,6 +322,12 @@ highlight ALEErrorSign ctermbg=red ctermfg=black
 highlight ALEWarningSign ctermbg=yellow ctermfg=black
 
 let g:ale_php_phpcs_standard = '~/.dotfiles/phpcs/personal.xml'
+
+"""""""""""""""""""
+"                 "
+"  MISCELLANEOUS  "
+"                 "
+"""""""""""""""""""
 
 if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local
