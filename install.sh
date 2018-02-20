@@ -19,6 +19,10 @@ if [ ! -d ~/.vim/bundle/vim-polyglot ]; then
   git clone https://github.com/sheerun/vim-polyglot.git
 fi
 
+if [ ! -d ~/.vim/bundle/vim-css3-syntax ]; then
+  git clone https://github.com/hail2u/vim-css3-syntax.git
+fi
+
 if [ ! -d ~/.vim/bundle/vim-pathogen ]; then
   git clone https://github.com/tpope/vim-pathogen.git
 fi
