@@ -68,4 +68,4 @@ EDITOR=$(which vim)
 export EDITOR
 
 # Automatically start/resume screen on login
-[ -z "$STY" ] && screen -U -R
+[ -z "$STY" ] && screen -U -D -RR
