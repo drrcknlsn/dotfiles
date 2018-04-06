@@ -15,7 +15,7 @@ if [ ! -d ~/.vim/bundle/Apprentice ]; then
   git clone https://github.com/romainl/Apprentice.git
 fi
 
-if [ ! -d ~/.vim/bundle/seoul256 ]; then
+if [ ! -d ~/.vim/bundle/seoul256.vim ]; then
   git clone https://github.com/junegunn/seoul256.vim.git
 fi
 
@@ -68,6 +68,19 @@ fi
 
 if [ ! -d ~/.vim/bundle/vim-easymotion ]; then
   git clone https://github.com/easymotion/vim-easymotion.git
+fi
+
+if [ ! -d ~/.vim/bundle/fzf ]; then
+  git clone https://github.com/junegunn/fzf.git
+  ~/.vim/bundle/fzf/install \
+    --no-key-bindings \
+    --no-completion \
+    --no-update-rc
+  . ~/.fzf.bash
+fi
+
+if [ ! -d ~/.vim/bundle/fzf.vim ]; then
+  git clone https://github.com/junegunn/fzf.vim.git
 fi
 
 if [ ! -L ~/.vimrc ]; then
