@@ -30,13 +30,13 @@ defencoding UTF-8
 vbell off
 
 # Ctrl-LeftArrow switches to the previous screen
-bindkey ^[[D prev
+#bindkey ^[[D prev
 
 # Ctrl-RightArrow switches to the next screen
-bindkey ^[[C next
+#bindkey ^[[C next
 
 # Ctrl-K kills the current screen
-bindkey ^K kill
+#bindkey ^K kill
 
 # Ctrl-N creates a new screen
-bindkey ^N screen
+#bindkey ^N screen
