@@ -7,8 +7,17 @@ fi
 
 # User specific environment and startup programs
 
-PATH=$PATH:$HOME/.local/bin:$HOME/bin:$HOME/.config/composer/vendor/bin
-PATH=$PATH:~/.npm/bin
+function path_add() {
+  if [ -d "$1" ] && [[ ! "$PATH" =~ (^|:)${1}($|:) ]]; then
+    PATH="${PATH:+"$PATH:"}$1"
+  fi
+}
+
+path_add $HOME/.local/bin
+path_add $HOME/bin
+path_add $HOME/.config/composer/vendor/bin
+path_add $HOME/.npm/bin
+path_add $HOME/.vim/bundle/fzf/bin
 
 export PATH
 
