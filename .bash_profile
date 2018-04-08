@@ -8,6 +8,7 @@ fi
 # User specific environment and startup programs
 
 PATH=$PATH:$HOME/.local/bin:$HOME/bin:$HOME/.config/composer/vendor/bin
+PATH=$PATH:~/.npm/bin
 
 export PATH
 
@@ -50,7 +51,7 @@ function set_prompt() {
   PS1+="\[$bblack\]@"
   PS1+="\[$white\]\h "
   PS1+="\[$bblack\]\W"
-  PS1+="\$(prompt_git \"$bcyan\" \"$bred\")"
+  PS1+="\$(prompt_git \"\[$bcyan\]\" \"\[$bred\]\")"
   PS1+="\[$bgreen\]]\\$"
   PS1+="\[$reset\] "
 

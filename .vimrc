@@ -52,7 +52,7 @@ set t_Co=256
 
 syntax on
 set background=dark
-colorscheme apprentice
+colorscheme onedark
 highlight IncSearch ctermbg=229
 highlight MatchParen ctermbg=black ctermfg=white
 
@@ -126,8 +126,8 @@ vnoremap / /\v
 " Display whitespace and special characters
 set list
 " eol:¬,
-" tab:→\ ,
-set listchars=tab:▸\ ,trail:·,nbsp:·,extends:…,precedes:…
+" tab:►\ ,
+set listchars=tab:→\ ,trail:·,nbsp:·,extends:…,precedes:…
 
 " Highlight eol/extends/precedes
 highlight NonText ctermfg=black
@@ -199,7 +199,7 @@ let g:closetag_html_style=1
 """""""""""""""
 
 let g:lightline = {
-    \ 'colorscheme': 'wombat',
+    \ 'colorscheme': 'onedark',
     \ 'active': {
     \   'left': [['mode', 'paste'], ['filename']],
     \   'right': [['linter_errors', 'linter_warnings', 'linter_ok'], ['syntastic', 'lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype']]
@@ -217,9 +217,9 @@ let g:lightline.component_type = {
   \ 'linter_errors': 'error'
   \ }
 
-let g:lightline#ale#indicator_warnings = '∆'
-let g:lightline#ale#indicator_errors = '✗'
-let g:lightline#ale#indicator_ok = '✓'
+let g:lightline#ale#indicator_warnings = 'Δ' " U+0394
+let g:lightline#ale#indicator_errors = '✘' " U+2718
+let g:lightline#ale#indicator_ok = '✔' " U+2714
 
 """""""""""""""""""""""""
 "                       "
@@ -238,10 +238,10 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 highlight Directory ctermfg=blue
 
-"function! NERDTreeHighlightFile(extension, fg, bg)
- "exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg
- "exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-"endfunction
+function! NERDTreeHighlightFile(extension, fg, bg)
+    exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg
+    exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
 
 "call NERDTreeHighlightFile('jade', 'green', 'none')
 "call NERDTreeHighlightFile('ini', 'yellow', 'none')
@@ -257,15 +257,18 @@ highlight Directory ctermfg=blue
 "call NERDTreeHighlightFile('js', 'Red', 'none')
 "call NERDTreeHighlightFile('php', 'Magenta', 'none')
 
+let g:NERDTreeDirArrowExpandable = '►' "U+25BA
+let g:NERDTreeDirArrowCollapsible = '▼' "U+25BC
+
 """""""""""""""
 "             "
 "  Syntastic  "
 "             "
 """""""""""""""
 
-nnoremap <leader>r :SyntasticReset<cr>
-nnoremap <leader>n :lnext<cr>
-nnoremap <leader>p :lprevious<cr>
+"nnoremap <leader>r :SyntasticReset<cr>
+"nnoremap <leader>n :lnext<cr>
+"nnoremap <leader>p :lprevious<cr>
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -275,11 +278,11 @@ let g:syntastic_check_on_wq = 0
 "let g:syntastic_auto_jump = 1
 "let g:syntastic_aggregate_errors = 1
 
-let g:syntastic_error_symbol = "✗" " \u2717
-let g:syntastic_warning_symbol = "∆" " \u26a0
+let g:syntastic_error_symbol = '✘' " U+2718
+let g:syntastic_warning_symbol = 'Δ' " U+0394
 
-let g:syntastic_style_error_symbol = "✗" " \u2717
-let g:syntastic_style_warning_symbol = "∆" " \u26a0
+let g:syntastic_style_error_symbol = '✘' " U+2718
+let g:syntastic_style_warning_symbol = 'Δ' " U+0394
 
 highlight SyntasticErrorSign ctermbg=red ctermfg=black
 highlight SyntasticStyleErrorSign ctermbg=black ctermfg=red
@@ -315,9 +318,16 @@ let g:PHP_noArrowMatching = 1
 "            "
 """"""""""""""
 
+nnoremap <leader>f :ALEFix<cr>
+nnoremap <leader>n :ALENext<cr>
+nnoremap <leader>p :ALEPrevious<cr>
+
+let g:ale_fixers = {'scss': ['stylelint']}
 let g:ale_sign_column_always = 1
-let g:ale_sign_error = '✗'
-let g:ale_sign_warning = '∆'
+let g:ale_sign_error = '✘' " U+2718
+let g:ale_sign_warning = 'Δ' " U+0394
+let g:ale_echo_msg_format = '[%linter%] %s'
+
 highlight ALEErrorSign ctermbg=red ctermfg=black
 highlight ALEWarningSign ctermbg=yellow ctermfg=black
 

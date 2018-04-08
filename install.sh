@@ -15,6 +15,10 @@ if [ ! -d ~/.vim/bundle/Apprentice ]; then
   git clone https://github.com/romainl/Apprentice.git
 fi
 
+if [ ! -d ~/.vim/bundle/onedark.vim ]; then
+  git clone https://github.com/joshdick/onedark.vim.git
+fi
+
 if [ ! -d ~/.vim/bundle/vim-polyglot ]; then
   git clone https://github.com/sheerun/vim-polyglot.git
 fi
@@ -100,4 +104,14 @@ fi
 if [ ! -L ~/.eslintrc ]; then
   [ -f ~/.eslintrc ] && mv ~/.eslintrc ~/.eslintrc.bak
   ln -sv ~/.dotfiles/.eslintrc ~/.eslintrc
+fi
+
+if [ ! -L ~/.npmrc ]; then
+  [ -f ~/.npmrc ] && mv ~/.npmrc ~/.npmrc.bak
+  ln -sv ~/.dotfiles/.npmrc ~/.npmrc
+fi
+
+if [ ! -L ~/.stylelintrc.json ]; then
+  [ -f ~/.stylelintrc.json ] && mv ~/.stylelintrc.json ~/.stylelintrc.json.bak
+  ln -sv ~/.dotfiles/.stylelintrc.json ~/.stylelintrc.json
 fi
