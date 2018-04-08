@@ -236,7 +236,7 @@ autocmd vimenter * wincmd p
 " Close vim if NERDTree is the only open buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-highlight Directory ctermfg=blue
+"highlight Directory ctermfg=blue
 
 function! NERDTreeHighlightFile(extension, fg, bg)
     exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg
