@@ -61,7 +61,7 @@ function set_prompt() {
 PROMPT_COMMAND=set_prompt
 export PROMPT_COMMAND
 
-LS_OPTIONS='--color=auto -A -b'
+LS_OPTIONS='--color=auto -b -h -l --group-directories-first'
 
 export LS_OPTIONS
 

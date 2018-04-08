@@ -52,8 +52,8 @@ set t_Co=256
 
 syntax on
 set background=dark
-colorscheme onedark
-highlight IncSearch ctermbg=229
+colorscheme seoul256
+"highlight IncSearch ctermbg=229
 highlight MatchParen ctermbg=black ctermfg=white
 
 set showcmd
@@ -199,7 +199,7 @@ let g:closetag_html_style=1
 """""""""""""""
 
 let g:lightline = {
-    \ 'colorscheme': 'onedark',
+    \ 'colorscheme': 'seoul256',
     \ 'active': {
     \   'left': [['mode', 'paste'], ['filename']],
     \   'right': [['linter_errors', 'linter_warnings', 'linter_ok'], ['syntastic', 'lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype']]
@@ -322,7 +322,10 @@ nnoremap <leader>f :ALEFix<cr>
 nnoremap <leader>n :ALENext<cr>
 nnoremap <leader>p :ALEPrevious<cr>
 
-let g:ale_fixers = {'scss': ['stylelint']}
+let g:ale_fixers = {
+    \ 'php': ['phpcbf'],
+    \ 'scss': ['stylelint']
+    \ }
 let g:ale_sign_column_always = 1
 let g:ale_sign_error = '✘' " U+2718
 let g:ale_sign_warning = 'Δ' " U+0394
@@ -332,6 +335,7 @@ highlight ALEErrorSign ctermbg=red ctermfg=black
 highlight ALEWarningSign ctermbg=yellow ctermfg=black
 
 let g:ale_php_phpcs_standard = '~/.dotfiles/phpcs/personal.xml'
+let g:ale_php_phpcbf_standard = 'PSR2'
 
 """""""""""""""""""
 "                 "

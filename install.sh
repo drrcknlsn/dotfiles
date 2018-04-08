@@ -15,8 +15,8 @@ if [ ! -d ~/.vim/bundle/Apprentice ]; then
   git clone https://github.com/romainl/Apprentice.git
 fi
 
-if [ ! -d ~/.vim/bundle/onedark.vim ]; then
-  git clone https://github.com/joshdick/onedark.vim.git
+if [ ! -d ~/.vim/bundle/seoul256 ]; then
+  git clone https://github.com/junegunn/seoul256.vim.git
 fi
 
 if [ ! -d ~/.vim/bundle/vim-polyglot ]; then
@@ -45,10 +45,6 @@ fi
 
 if [ ! -d ~/.vim/bundle/lightline-ale ]; then
   git clone https://github.com/maximbaz/lightline-ale.git
-fi
-
-if [ ! -d ~/.vim/bundle/emmet-vim ]; then
-  git clone https://github.com/mattn/emmet-vim.git
 fi
 
 if [ ! -d ~/.vim/bundle/nerdcommenter ]; then
