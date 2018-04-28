@@ -77,5 +77,8 @@ export LS_OPTIONS
 EDITOR=$(which vim)
 export EDITOR
 
+# Disable Ctrl-s
+stty -ixon
+
 # Automatically start/resume screen on login
 [ -z "$STY" ] && screen -U -D -RR

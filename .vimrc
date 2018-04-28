@@ -336,6 +336,8 @@ highlight ALEWarningSign ctermbg=yellow ctermfg=black
 
 let g:ale_php_phpcs_standard = '~/.dotfiles/phpcs/personal.xml'
 let g:ale_php_phpcbf_standard = 'PSR2'
+let g:ale_php_phpstan_level = 'max'
+"let g:ale_php_phpstan_configuration = '~/.dotfiles/phpstan/phpstan.neon'
 
 """"""""""""""""""
 "                "

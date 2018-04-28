@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ruleset name="Personal" namespace="Drrcknlsn\CS\Standard">
   <description>My personal coding standard</description>
-  <rule ref="PSR2" />
+  <rule ref="PSR2"/>
+  <rule ref="PEAR">
+    <exclude name="Generic.Commenting"/>
+    <exclude name="PEAR.Commenting"/>
+    <exclude name="PEAR.Functions.FunctionCallSignature.CloseBracketLine"/>
+    <exclude name="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket"/>
+    <exclude name="PEAR.NamingConventions.ValidFunctionName.FunctionNameInvalid"/>
+    <exclude name="PEAR.NamingConventions.ValidFunctionName.FunctionNoCapital"/>
+    <exclude name="PEAR.NamingConventions.ValidFunctionName.PrivateNoUnderscore"/>
+    <exclude name="PEAR.NamingConventions.ValidVariableName.PrivateNoUnderscore"/>
+  </rule>
+  <rule ref="Generic.PHP.NoSilencedErrors"/>
+  <rule ref="Squiz.Strings.ConcatenationSpacing">
+      <properties>
+          <property name="spacing" value="1"/>
+      </properties>
+  </rule>
+  <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace"/>
 </ruleset>
