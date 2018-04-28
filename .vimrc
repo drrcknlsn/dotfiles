@@ -52,7 +52,7 @@ set t_Co=256
 
 syntax on
 set background=dark
-colorscheme seoul256
+colorscheme apprentice
 "highlight IncSearch ctermbg=229
 highlight MatchParen ctermbg=black ctermfg=white
 
