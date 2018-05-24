@@ -1,6 +1,18 @@
 #!/bin/bash
+[ -d $HOME/bin ] || mkdir $HOME/bin
+
+if ! [ -x "$(command -v wget)" ]; then
+  echo 'Error: wget is not installed.' >&2
+  exit 1
+fi
+
+if ! [ -x "$(command -v composer)" ]; then
+  . $HOME/.dotfiles/bin/install_composer
+fi
+
 composer global require phpstan/phpstan
 composer global require squizlabs/php_codesniffer
+
 npm install -g eslint
 npm install -g jsonlint
 npm install -g prettier

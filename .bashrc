@@ -11,4 +11,3 @@ fi
 # User specific aliases and functions
 
 alias vi='vim'
-alias npm="$HOME/.npm/bin/npm"
