@@ -80,6 +80,7 @@ set ruler
 
 " Shows line numbers
 set number
+set relativenumber
 
 " Highlight the line/column of the cursor
 set cursorline
@@ -228,13 +229,13 @@ let g:lightline#ale#indicator_ok = '✔' " U+2714
 """""""""""""""""""""""""
 
 " Start NERDTree when vim starts up
-autocmd vimenter * NERDTree
+"autocmd vimenter * NERDTree
 
 " Focus the real buffer
-autocmd vimenter * wincmd p
+"autocmd vimenter * wincmd p
 
 " Close vim if NERDTree is the only open buffer
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "highlight Directory ctermfg=blue
 
@@ -361,6 +362,15 @@ let g:fzf_colors = {
   \ 'header':  ['fg', 'Comment']
   \ }
 let g:fzf_layout = { 'down': '~30%' }
+
+
+"""""""""""""""""""""""""
+"                       "
+"  vim-highlightedyank  "
+"                       "
+"""""""""""""""""""""""""
+
+let g:highlightedyank_highlight_duration = 700
 
 """""""""""""""""""
 "                 "
