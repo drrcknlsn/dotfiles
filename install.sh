@@ -63,13 +63,6 @@ if [ ! -d ~/.vim/bundle/editorconfig-vim ]; then
   git clone https://github.com/editorconfig/editorconfig-vim.git
 fi
 
-if [ ! -d ~/.vim/bundle/phpcd.vim ]; then
-  git clone https://github.com/lvht/phpcd.vim.git
-  cd ~/.vim/bundle/phpcd.vim
-  composer install
-  cd ~/.vim/bundle
-fi
-
 if [ ! -d ~/.vim/bundle/vim-easymotion ]; then
   git clone https://github.com/easymotion/vim-easymotion.git
 fi
