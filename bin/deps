@@ -10,8 +10,14 @@ if ! [ -x "$(command -v composer)" ]; then
   . $HOME/.dotfiles/bin/install_composer
 fi
 
+composer global config minimum-stability dev
+composer global config prefer-stable true
+
 composer global require phpstan/phpstan
 composer global require squizlabs/php_codesniffer
+composer global require felixfbecker/language-server
+
+composer run-script --working-dir=$HOME/.config/composer/vendor/felixfbecker/language-server/ parse-stubs
 
 npm install -g eslint
 npm install -g jsonlint
