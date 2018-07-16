@@ -10,4 +10,10 @@ fi
 
 # User specific aliases and functions
 
+if [ -f /usr/local/bin/gls ]; then
+  alias ls='/usr/local/bin/gls $LS_OPTIONS'
+else
+  alias ls='ls $LS_OPTIONS'
+fi
+
 alias vi='vim'

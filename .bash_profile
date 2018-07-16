@@ -71,8 +71,10 @@ PROMPT_COMMAND=set_prompt
 export PROMPT_COMMAND
 
 LS_OPTIONS='--color=auto -b -h -l --group-directories-first'
-
 export LS_OPTIONS
+
+CLICOLOR=1
+export CLICOLOR
 
 EDITOR=$(which vim)
 export EDITOR
