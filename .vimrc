@@ -337,18 +337,6 @@ highlight ALEWarningSign ctermbg=yellow ctermfg=black
 
 inoremap <C-]> :ALEGoToDefinition<cr>
 
-"function! CleverTab()
-  "if pumvisible()
-    "return "\<C-N>"
-  "endif
-  "if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
-    "return "\<Tab>"
-  "elseif exists('&omnifunc') && &omnifunc != ''
-    "return "\<C-X>\<C-O>"
-  "else
-    "return "\<C-N>"
-  "endif
-"endfunction
 function! CleverTab(direction)
   if pumvisible()
     if a:direction == "backward"
@@ -365,13 +353,15 @@ function! CleverTab(direction)
     return "\<C-N>"
   endif
 endfunction
-"inoremap <expr> <silent> <tab> CleverTab()
+
 inoremap <expr> <silent> <tab> CleverTab('forward')
 inoremap <expr> <silent> <S-tab> CleverTab('backward')
 
 let g:ale_completion_enabled = 1
 set completeopt=menuone,noinsert,noselect
 
+let g:ale_php_phpcs = '~/.config/composer/vendor/bin/phpcs'
+"let g:ale_php_phpcs_use_global = 1
 "let g:ale_php_phpcs_standard = '~/.dotfiles/phpcs/personal.xml'
 "let g:ale_php_phpcbf_standard = 'PSR2'
 let g:ale_php_phpcs_standard = 'PSR12'
