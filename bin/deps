@@ -1,6 +1,5 @@
 #!/bin/bash
 [ -d $HOME/bin ] || mkdir $HOME/bin
-[ -d $HOME/.local/share/psysh ] || mkdir -p $HOME/.local/share/psysh
 
 if ! [ -x "$(command -v wget)" ]; then
   echo 'Error: wget is not installed.' >&2
@@ -22,6 +21,9 @@ package_installed=$?
 if [ $package_installed -eq 1 ]; then
   composer global require $package_name
 fi
+
+php_docs_db_dir=$HOME/.local/share/psysh
+php_docs_db_path=$php_docs_db_dir/php_manual.sqlite
 
 if ! [ -f $php_docs_db_path ]; then
   mkdir -p $php_docs_db_dir
