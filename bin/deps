@@ -1,5 +1,6 @@
 #!/bin/bash
 [ -d $HOME/bin ] || mkdir $HOME/bin
+[ -d $HOME/.local/share/psysh ] || mkdir -p $HOME/.local/share/psysh
 
 if ! [ -x "$(command -v wget)" ]; then
   echo 'Error: wget is not installed.' >&2
@@ -10,16 +11,79 @@ if ! [ -x "$(command -v composer)" ]; then
   . $HOME/.dotfiles/bin/install_composer
 fi
 
-composer global config minimum-stability dev
-composer global config prefer-stable true
+composer global config -q minimum-stability dev
+composer global config -q prefer-stable true
 
-composer global require phpstan/phpstan
-composer global require squizlabs/php_codesniffer
-composer global require felixfbecker/language-server
+# Install PsySH
+package_name=psy/psysh
+composer global show -D 2>/dev/null | grep -q ^$package_name
+package_installed=$?
 
-composer run-script --working-dir=$HOME/.config/composer/vendor/felixfbecker/language-server/ parse-stubs
+if [ $package_installed -eq 1 ]; then
+  composer global require $package_name
+fi
 
-npm install -g eslint
-npm install -g jsonlint
-npm install -g prettier
-npm install -g stylelint
+if ! [ -f $php_docs_db_path ]; then
+  mkdir -p $php_docs_db_dir
+  wget -O $php_docs_db_path http://psysh.org/manual/en/php_manual.sqlite
+fi
+
+# Install PHPStan
+package_name=phpstan/phpstan
+composer global show -D 2>/dev/null | grep -q ^$package_name
+package_installed=$?
+
+if [ $package_installed -eq 1 ]; then
+  composer global require $package_name
+fi
+
+# Install PHP_CodeSniffer
+package_name=squizlabs/php_codesniffer
+composer global show -D 2>/dev/null | grep -q ^$package_name
+package_installed=$?
+
+if [ $package_installed -eq 1 ]; then
+  composer global require $package_name
+fi
+
+# Install PHP Language Server
+package_name=felixfbecker/language-server
+composer global show -D 2>/dev/null | grep -q ^$package_name
+package_installed=$?
+
+if [ $package_installed -eq 1 ]; then
+  composer global require $package_name
+  composer run-script --working-dir=$HOME/.config/composer/vendor/felixfbecker/language-server/ parse-stubs
+fi
+
+package_name=eslint
+npm list --depth 0 -g >/dev/null
+package_installed=$?
+
+if [ $package_installed -eq 1 ]; then
+  npm install -g $package_name
+fi
+
+package_name=jsonlint
+npm list --depth 0 -g >/dev/null
+package_installed=$?
+
+if [ $package_installed -eq 1 ]; then
+  npm install -g $package_name
+fi
+
+package_name=prettier
+npm list --depth 0 -g >/dev/null
+package_installed=$?
+
+if [ $package_installed -eq 1 ]; then
+  npm install -g $package_name
+fi
+
+package_name=stylelint
+npm list --depth 0 -g >/dev/null
+package_installed=$?
+
+if [ $package_installed -eq 1 ]; then
+  npm install -g $package_name
+fi
