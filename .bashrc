@@ -17,3 +17,4 @@ else
 fi
 
 alias vi='vim'
+alias ls='/bin/ls $LS_OPTIONS'
