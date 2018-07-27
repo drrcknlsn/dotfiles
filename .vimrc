@@ -52,11 +52,14 @@ set t_Co=256
 
 syntax on
 set background=dark
-colorscheme apprentice
+colorscheme onedark
 "highlight IncSearch ctermbg=229
 highlight MatchParen ctermbg=black ctermfg=white
 
 set showcmd
+
+" Don't show the mode (shown by lightline)
+set noshowmode
 
 " Set character encoding to UTF-8 with no BOM
 set encoding=utf-8
@@ -200,7 +203,7 @@ let g:closetag_html_style=1
 """""""""""""""
 
 let g:lightline = {
-    \ 'colorscheme': 'seoul256',
+    \ 'colorscheme': 'onedark',
     \ 'active': {
     \   'left': [['mode', 'paste'], ['filename']],
     \   'right': [['linter_errors', 'linter_warnings', 'linter_ok'], ['syntastic', 'lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype']]
@@ -357,7 +360,7 @@ endfunction
 inoremap <expr> <silent> <tab> CleverTab('forward')
 inoremap <expr> <silent> <S-tab> CleverTab('backward')
 
-let g:ale_completion_enabled = 1
+"let g:ale_completion_enabled = 1
 set completeopt=menuone,noinsert,noselect
 
 let g:ale_php_phpcs = '~/.config/composer/vendor/bin/phpcs'
