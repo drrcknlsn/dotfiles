@@ -52,7 +52,7 @@ set t_Co=256
 
 syntax on
 set background=dark
-colorscheme onedark
+colorscheme apprentice
 "highlight IncSearch ctermbg=229
 highlight MatchParen ctermbg=black ctermfg=white
 
@@ -203,7 +203,7 @@ let g:closetag_html_style=1
 """""""""""""""
 
 let g:lightline = {
-    \ 'colorscheme': 'onedark',
+    \ 'colorscheme': 'wombat',
     \ 'active': {
     \   'left': [['mode', 'paste'], ['filename']],
     \   'right': [['linter_errors', 'linter_warnings', 'linter_ok'], ['syntastic', 'lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype']]
