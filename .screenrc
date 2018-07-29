@@ -3,13 +3,16 @@ shell -$SHELL
 
 # Setup the status line (http://www.gnu.org/software/screen/manual/html_node/String-Escapes.html)
 hardstatus alwayslastline
-hardstatus string '%{= G}[ %{b}%H%? %1`%? %{G}][%= %{w}%-w%{bW} %n*%f%t%?(%u)%? %{-}%+w %=%{G}][ %{b}%D %m/%d %{W}%C%a %{G}]'
+hardstatus string '%{= K}[ %{c}%H%? %1`%? %{K}][%= %{w}%-w%{ck} %n %f%t%?(%u)%? %{-}%+w %=%{K}][ %{c}%D %m/%d %{W}%C%a %{K}]'
 
 # Turn welcome message off
 startup_message off
 
 # Prevent annoying UTMP logging messages
 deflogin off
+
+# Prevents annoying messages
+msgwait 0
 
 # Fix residual text after exiting vim
 altscreen on
