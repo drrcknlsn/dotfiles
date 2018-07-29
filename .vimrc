@@ -53,13 +53,9 @@ set t_Co=256
 syntax on
 set background=dark
 colorscheme apprentice
-"highlight IncSearch ctermbg=229
 highlight MatchParen ctermbg=black ctermfg=white
 
 set showcmd
-
-" Don't show the mode (shown by lightline)
-set noshowmode
 
 " Set character encoding to UTF-8 with no BOM
 set encoding=utf-8
@@ -203,12 +199,18 @@ let g:closetag_html_style=1
 """""""""""""""
 
 let g:lightline = {
-    \ 'colorscheme': 'wombat',
-    \ 'active': {
-    \   'left': [['mode', 'paste'], ['filename']],
-    \   'right': [['linter_errors', 'linter_warnings', 'linter_ok'], ['syntastic', 'lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype']]
-    \ }
-    \ }
+  \ 'colorscheme': 'wombat',
+  \ 'component_function': {
+  \   'filename': 'LightlineFilename'
+  \ },
+  \ 'active': {
+  \   'left': [['mode', 'paste'], ['readonly', 'absolutepath', 'charvalue']],
+  \   'right': [['linter_errors', 'linter_warnings', 'linter_ok'], ['lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype']]
+  \ },
+  \ 'component': {
+  \   'charvalue': '[%b/0x%B]'
+  \ },
+  \ }
 
 let g:lightline.component_expand = {
   \ 'linter_warnings': 'lightline#ale#warnings',
@@ -224,6 +226,11 @@ let g:lightline.component_type = {
 let g:lightline#ale#indicator_warnings = 'Δ' " U+0394
 let g:lightline#ale#indicator_errors = '✘' " U+2718
 let g:lightline#ale#indicator_ok = '✔' " U+2714
+
+" Don't show the mode (shown by lightline)
+set noshowmode
+
+set showtabline=2
 
 """"""""""""""""""""""""""""""""
 "                              "
