@@ -15,10 +15,6 @@ if [ ! -d ~/.vim/bundle/Apprentice ]; then
   git clone https://github.com/romainl/Apprentice.git
 fi
 
-if [ ! -d ~/.vim/bundle/onedark.vim ]; then
-  git clone https://github.com/joshdick/onedark.vim.git
-fi
-
 if [ ! -d ~/.vim/bundle/vim-polyglot ]; then
   git clone https://github.com/sheerun/vim-polyglot.git
 fi
@@ -49,10 +45,6 @@ fi
 
 if [ ! -d ~/.vim/bundle/nerdcommenter ]; then
   git clone https://github.com/scrooloose/nerdcommenter.git
-fi
-
-if [ ! -d ~/.vim/bundle/nerdtree ]; then
-  git clone https://github.com/scrooloose/nerdtree.git
 fi
 
 if [ ! -d ~/.vim/bundle/PHP-Indenting-for-VIm ]; then

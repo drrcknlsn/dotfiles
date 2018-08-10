@@ -1,16 +1,18 @@
 # Use a login shell
 shell -$SHELL
 
-# Setup the status line
+# Setup the status line (http://www.gnu.org/software/screen/manual/html_node/String-Escapes.html)
 hardstatus alwayslastline
-hardstatus string '%{= kK}[ %{B}%H%? %1`%? %{K}][%= %{= kW}%-w%{+b BW} %n*%t%?(%u)%? %{-}%+w %=%{K}][ %{B}%m/%d %{W}%C%a %{K}]'
-#hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W}%c %{g}]'
+hardstatus string '%{= K}[ %{c}%H%? %1`%? %{K}][%= %{w}%-w%{ck} %n %f%t%?(%u)%? %{-}%+w %=%{K}][ %{c}%D %m/%d %{W}%C%a %{K}]'
 
 # Turn welcome message off
 startup_message off
 
 # Prevent annoying UTMP logging messages
 deflogin off
+
+# Prevents annoying messages
+msgwait 0
 
 # Fix residual text after exiting vim
 altscreen on
@@ -28,15 +30,3 @@ defencoding UTF-8
 
 # Prevent screen flicker (visual bell)
 vbell off
-
-# Ctrl-LeftArrow switches to the previous screen
-#bindkey ^[[D prev
-
-# Ctrl-RightArrow switches to the next screen
-#bindkey ^[[C next
-
-# Ctrl-K kills the current screen
-#bindkey ^K kill
-
-# Ctrl-N creates a new screen
-#bindkey ^N screen

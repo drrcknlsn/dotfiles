@@ -52,14 +52,10 @@ set t_Co=256
 
 syntax on
 set background=dark
-colorscheme onedark
-"highlight IncSearch ctermbg=229
+colorscheme apprentice
 highlight MatchParen ctermbg=black ctermfg=white
 
 set showcmd
-
-" Don't show the mode (shown by lightline)
-set noshowmode
 
 " Set character encoding to UTF-8 with no BOM
 set encoding=utf-8
@@ -204,12 +200,18 @@ let g:closetag_html_style=1
 """""""""""""""
 
 let g:lightline = {
-    \ 'colorscheme': 'onedark',
-    \ 'active': {
-    \   'left': [['mode', 'paste'], ['filename']],
-    \   'right': [['linter_errors', 'linter_warnings', 'linter_ok'], ['syntastic', 'lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype']]
-    \ }
-    \ }
+  \ 'colorscheme': 'wombat',
+  \ 'component_function': {
+  \   'filename': 'LightlineFilename'
+  \ },
+  \ 'active': {
+  \   'left': [['mode', 'paste'], ['readonly', 'absolutepath', 'charvalue']],
+  \   'right': [['linter_errors', 'linter_warnings', 'linter_ok'], ['lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype']]
+  \ },
+  \ 'component': {
+  \   'charvalue': '[%b/0x%B]'
+  \ },
+  \ }
 
 let g:lightline.component_expand = {
   \ 'linter_warnings': 'lightline#ale#warnings',
@@ -226,87 +228,10 @@ let g:lightline#ale#indicator_warnings = 'Δ' " U+0394
 let g:lightline#ale#indicator_errors = '✘' " U+2718
 let g:lightline#ale#indicator_ok = '✔' " U+2714
 
-"""""""""""""""""""""""""
-"                       "
-"  scrooloose/nerdtree  "
-"                       "
-"""""""""""""""""""""""""
+" Don't show the mode (shown by lightline)
+set noshowmode
 
-" Start NERDTree when vim starts up
-"autocmd vimenter * NERDTree
-
-" Focus the real buffer
-"autocmd vimenter * wincmd p
-
-" Close vim if NERDTree is the only open buffer
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-"highlight Directory ctermfg=blue
-
-function! NERDTreeHighlightFile(extension, fg, bg)
-    exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg
-    exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-endfunction
-
-"call NERDTreeHighlightFile('jade', 'green', 'none')
-"call NERDTreeHighlightFile('ini', 'yellow', 'none')
-"call NERDTreeHighlightFile('md', 'blue', 'none')
-"call NERDTreeHighlightFile('yml', 'yellow', 'none')
-"call NERDTreeHighlightFile('config', 'yellow', 'none')
-"call NERDTreeHighlightFile('conf', 'yellow', 'none')
-"call NERDTreeHighlightFile('json', 'yellow', 'none')
-"call NERDTreeHighlightFile('html', 'yellow', 'none')
-"call NERDTreeHighlightFile('styl', 'cyan', 'none')
-"call NERDTreeHighlightFile('css', 'cyan', 'none')
-"call NERDTreeHighlightFile('coffee', 'Red', 'none')
-"call NERDTreeHighlightFile('js', 'Red', 'none')
-"call NERDTreeHighlightFile('php', 'Magenta', 'none')
-
-let g:NERDTreeDirArrowExpandable = '►' "U+25BA
-let g:NERDTreeDirArrowCollapsible = '▼' "U+25BC
-
-"""""""""""""""
-"             "
-"  Syntastic  "
-"             "
-"""""""""""""""
-
-"nnoremap <leader>r :SyntasticReset<cr>
-"nnoremap <leader>n :lnext<cr>
-"nnoremap <leader>p :lprevious<cr>
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-"let g:syntastic_quiet_messages = {'level': 'warnings'}
-"let g:syntastic_auto_jump = 1
-"let g:syntastic_aggregate_errors = 1
-
-let g:syntastic_error_symbol = '✘' " U+2718
-let g:syntastic_warning_symbol = 'Δ' " U+0394
-
-let g:syntastic_style_error_symbol = '✘' " U+2718
-let g:syntastic_style_warning_symbol = 'Δ' " U+0394
-
-highlight SyntasticErrorSign ctermbg=red ctermfg=black
-highlight SyntasticStyleErrorSign ctermbg=black ctermfg=red
-
-highlight SyntasticWarningSign ctermbg=yellow ctermfg=black
-highlight SyntasticStyleWarningSign ctermbg=black ctermfg=yellow
-
-" JavaScript
-
-let g:syntastic_javascript_checkers = ['eslint']
-
-" PHP
-
-let g:syntastic_php_checkers = ['php', 'phpcs']
-
-" TypeScript
-
-let g:syntastic_typescript_checkers = ['tsc', 'tslint']
-let g:syntastic_typescript_tsc_args = "--target ES6 --noImplicitAny"
+set showtabline=2
 
 """"""""""""""""""""""""""""""""
 "                              "
@@ -397,15 +322,6 @@ let g:fzf_colors = {
   \ 'header':  ['fg', 'Comment']
   \ }
 let g:fzf_layout = { 'down': '~30%' }
-
-
-"""""""""""""""""""""""""
-"                       "
-"  vim-highlightedyank  "
-"                       "
-"""""""""""""""""""""""""
-
-let g:highlightedyank_highlight_duration = 700
 
 """""""""""""""""""
 "                 "
