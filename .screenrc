@@ -36,3 +36,9 @@ bind h focus left
 bind j focus down
 bind k focus up
 bind l focus right
+
+# Change the split caption colors
+caption string '%{Kk}%3n %t'
+
+# Change the vertical split and command line colors
+rendition so KW
