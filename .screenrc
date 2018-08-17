@@ -30,3 +30,9 @@ defencoding UTF-8
 
 # Prevent screen flicker (visual bell)
 vbell off
+
+# Set up vim-like region navigation
+bind h focus left
+bind j focus down
+bind k focus up
+bind l focus right
