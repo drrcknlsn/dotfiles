@@ -169,6 +169,8 @@ autocmd BufNewFile,BufRead composer.lock set ft=json
 
 autocmd BufNewFile,BufRead *.phtml set ft=php sw=2 ts=2
 
+autocmd FileType c set sw=4 ts=4
+autocmd FileType cpp set sw=4 ts=4
 autocmd FileType php set sw=4 ts=4
 autocmd FileType blade set sw=2 ts=2
 
