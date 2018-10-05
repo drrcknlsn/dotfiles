@@ -8,3 +8,7 @@ for dir in */; do
   git pull
   cd $bundles
 done
+
+composer global update
+
+npm update -g
