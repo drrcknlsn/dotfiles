@@ -68,7 +68,7 @@ else
 fi
 
 package_name=eslint
-npm list --depth 0 -g >/dev/null
+npm list --depth 0 -g $package_name >/dev/null
 package_installed=$?
 
 if [ $package_installed -eq 1 ]; then
@@ -79,7 +79,7 @@ else
 fi
 
 package_name=jsonlint
-npm list --depth 0 -g >/dev/null
+npm list --depth 0 -g $package_name >/dev/null
 package_installed=$?
 
 if [ $package_installed -eq 1 ]; then
@@ -90,7 +90,7 @@ else
 fi
 
 package_name=prettier
-npm list --depth 0 -g >/dev/null
+npm list --depth 0 -g $package_name >/dev/null
 package_installed=$?
 
 if [ $package_installed -eq 1 ]; then
@@ -101,7 +101,7 @@ else
 fi
 
 package_name=stylelint
-npm list --depth 0 -g >/dev/null
+npm list --depth 0 -g $package_name >/dev/null
 package_installed=$?
 
 if [ $package_installed -eq 1 ]; then
