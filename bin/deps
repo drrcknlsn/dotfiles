@@ -36,7 +36,10 @@ composer global show -D 2>/dev/null | grep -q ^$package_name
 package_installed=$?
 
 if [ $package_installed -eq 1 ]; then
+  echo "Installing $package_name..."
   composer global require $package_name
+else
+  echo "Already installed: $package_name"
 fi
 
 # Install PHP_CodeSniffer
@@ -45,7 +48,10 @@ composer global show -D 2>/dev/null | grep -q ^$package_name
 package_installed=$?
 
 if [ $package_installed -eq 1 ]; then
+  echo "Installing $package_name..."
   composer global require $package_name
+else
+  echo "Already installed: $package_name"
 fi
 
 # Install PHP Language Server
@@ -54,8 +60,11 @@ composer global show -D 2>/dev/null | grep -q ^$package_name
 package_installed=$?
 
 if [ $package_installed -eq 1 ]; then
+  echo "Installing $package_name..."
   composer global require $package_name
   composer run-script --working-dir=$HOME/.config/composer/vendor/felixfbecker/language-server/ parse-stubs
+else
+  echo "Already installed: $package_name"
 fi
 
 package_name=eslint
@@ -63,7 +72,10 @@ npm list --depth 0 -g >/dev/null
 package_installed=$?
 
 if [ $package_installed -eq 1 ]; then
+  echo "Installing $package_name..."
   npm install -g $package_name
+else
+  echo "Already installed: $package_name"
 fi
 
 package_name=jsonlint
@@ -71,7 +83,10 @@ npm list --depth 0 -g >/dev/null
 package_installed=$?
 
 if [ $package_installed -eq 1 ]; then
+  echo "Installing $package_name..."
   npm install -g $package_name
+else
+  echo "Already installed: $package_name"
 fi
 
 package_name=prettier
@@ -79,7 +94,10 @@ npm list --depth 0 -g >/dev/null
 package_installed=$?
 
 if [ $package_installed -eq 1 ]; then
+  echo "Installing $package_name..."
   npm install -g $package_name
+else
+  echo "Already installed: $package_name"
 fi
 
 package_name=stylelint
@@ -87,5 +105,8 @@ npm list --depth 0 -g >/dev/null
 package_installed=$?
 
 if [ $package_installed -eq 1 ]; then
+  echo "Installing $package_name..."
   npm install -g $package_name
+else
+  echo "Already installed: $package_name"
 fi
