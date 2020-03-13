@@ -99,17 +99,6 @@ else
   echo "Already installed: $package_name"
 fi
 
-package_name=prettier
-npm list --depth 0 -g $package_name >/dev/null
-package_installed=$?
-
-if [ $package_installed -eq 1 ]; then
-  echo "Installing $package_name..."
-  npm install -g $package_name
-else
-  echo "Already installed: $package_name"
-fi
-
 package_name=stylelint
 npm list --depth 0 -g $package_name >/dev/null
 package_installed=$?
