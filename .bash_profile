@@ -7,17 +7,27 @@ fi
 
 # User specific environment and startup programs
 
-function path_add() {
+function path_prepend() {
   if [ -d "$1" ] && [[ ! "$PATH" =~ (^|:)${1}($|:) ]]; then
-    PATH="${PATH:+"$PATH:"}$1"
+    PATH="$1:$PATH"
   fi
 }
 
-path_add $HOME/.local/bin
-path_add $HOME/bin
-path_add $HOME/.config/composer/vendor/bin
-path_add $HOME/.npm/bin
-path_add $HOME/.vim/bundle/fzf/bin
+function path_append() {
+  if [ -d "$1" ] && [[ ! "$PATH" =~ (^|:)${1}($|:) ]]; then
+    #PATH="${PATH:+"$PATH:"}$1"
+    PATH="$PATH:$1"
+  fi
+}
+
+# Global bin overrides
+path_prepend $HOME/obin
+
+path_append $HOME/.local/bin
+path_append $HOME/bin
+path_append $HOME/.config/composer/vendor/bin
+path_append $HOME/.npm/bin
+path_append $HOME/.vim/bundle/fzf/bin
 
 export PATH
 
