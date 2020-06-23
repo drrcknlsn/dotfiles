@@ -5,6 +5,9 @@ shell -$SHELL
 hardstatus alwayslastline
 hardstatus string '%{= K}[ %{c}%H%? %1`%? %{K}][%= %{w}%-w%{ck} %n %f%t%?(%u)%? %{-}%+w %=%{K}][ %{c}%D %m/%d %{W}%C%a %{K}]'
 
+# Add a larger scrollback buffer
+defscrollback 5000
+
 # Turn welcome message off
 startup_message off
 
@@ -42,3 +45,5 @@ caption string '%{Kk}%3n %t'
 
 # Change the vertical split and command line colors
 rendition so KW
+
+source $HOME/.screenrc.local

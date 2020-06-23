@@ -97,5 +97,10 @@ export FZF_DEFAULT_COMMAND='
 # Disable Ctrl-s
 stty -ixon
 
+
+if [ -f ~/.bash_profile.local ]; then
+  . ~/.bash_profile.local
+fi
+
 # Automatically start/resume screen on login
 [ -z "$STY" ] && screen -U -D -RR
