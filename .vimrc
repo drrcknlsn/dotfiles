@@ -255,6 +255,7 @@ nnoremap <leader>n :ALENext<cr>
 nnoremap <leader>p :ALEPrevious<cr>
 
 let g:ale_fixers = {
+    \ 'javascript': ['eslint'],
     \ 'php': ['phpcbf'],
     \ 'scss': ['stylelint']
     \ }
