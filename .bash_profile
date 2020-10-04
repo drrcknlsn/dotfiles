@@ -89,6 +89,22 @@ export CLICOLOR
 EDITOR=$(which vim)
 export EDITOR
 
+function update_tlds() {
+  wget -qO- https://data.iana.org/TLD/tlds-alpha-by-domain.txt | grep -v '^#' | tr '[:upper:]' '[:lower:]' > ~/.dotfiles/tlds.txt
+}
+
+function real_whois() {
+  if [ ! -f ~/.dotfiles/tlds.txt ]; then
+    update_tlds
+  fi
+
+  local tlds=$(cat ~/.dotfiles/tlds.txt | paste -sd '|' -)
+  local tld=$(echo $1 | grep -oP "\b($tlds)$")
+  local host_for_tld=$(whois -h whois.iana.org $tld | grep '^whois:' | sed 's/whois:\s*//')
+
+  whois -h $host_for_tld $1
+}
+
 export FZF_DEFAULT_COMMAND='
   (git ls-tree -r --name-only HEAD ||
     find . -path "*/\.*" -prune -o -type f -print -o -type l -print |
