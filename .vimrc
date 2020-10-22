@@ -167,6 +167,7 @@ autocmd BufNewFile,BufRead .jscsrc set ft=json
 autocmd BufNewFile,BufRead .jshintrc set ft=json
 autocmd BufNewFile,BufRead composer.lock set ft=json
 
+autocmd BufNewFile,BufRead *.neon set ft=yaml
 autocmd BufNewFile,BufRead *.phtml set ft=php sw=2 ts=2
 
 autocmd FileType c set sw=4 ts=4
