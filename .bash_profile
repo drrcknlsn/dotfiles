@@ -100,7 +100,13 @@ function real_whois() {
 
   local tlds=$(cat ~/.dotfiles/tlds.txt | paste -sd '|' -)
   local tld=$(echo $1 | grep -oP "\b($tlds)$")
-  local host_for_tld=$(whois -h whois.iana.org $tld | grep '^whois:' | sed 's/whois:\s*//')
+  local host_for_tld
+
+  if [ $tld = "dev" ]; then
+    host_for_tld=whois.nic.google
+  else
+    host_for_tld=$(whois -h whois.iana.org $tld | grep '^whois:' | sed 's/whois:\s*//')
+  fi
 
   whois -h $host_for_tld $1
 }
