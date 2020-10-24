@@ -1,5 +1,7 @@
 #!/bin/bash
+
 [ -d $HOME/bin ] || mkdir $HOME/bin
+[ -d $HOME/obin ] || mkdir $HOME/obin
 
 if ! [ -x "$(command -v wget)" ]; then
   echo 'Error: wget is not installed.' >&2
