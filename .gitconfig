@@ -28,3 +28,5 @@
   editor = vim
 [push]
   default = simple
+[pull]
+  rebase = false
