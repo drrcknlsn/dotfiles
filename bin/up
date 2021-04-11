@@ -9,6 +9,8 @@ for dir in */; do
   cd $bundles
 done
 
+composer global self-update
 composer global update
 
+npm install -g npm
 npm update -g
