@@ -23,6 +23,7 @@
   st = status -sb
   br = branch
   bm = branch --merged
+  bd = branch -d
 [core]
   pager = less -x1,5
   editor = vim
