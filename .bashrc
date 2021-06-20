@@ -18,3 +18,5 @@ fi
 
 alias vi='vim'
 alias ls='/bin/ls $LS_OPTIONS'
+alias tree='tree -C'
+alias df='df -h'
