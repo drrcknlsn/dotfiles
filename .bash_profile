@@ -118,6 +118,7 @@ export FZF_DEFAULT_COMMAND='
 
 # Disable Ctrl-s
 stty -ixon
+stty stop ""
 
 
 if [ -f ~/.bash_profile.local ]; then
