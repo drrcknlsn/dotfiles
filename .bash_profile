@@ -29,6 +29,9 @@ path_append $HOME/.composer/vendor/bin
 path_append $HOME/.config/composer/vendor/bin
 path_append $HOME/.npm/bin
 path_append $HOME/.vim/bundle/fzf/bin
+# MacOS
+path_append /opt/homebrew/bin
+path_append /opt/homebrew/sbin
 
 export PATH
 
