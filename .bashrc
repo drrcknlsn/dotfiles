@@ -12,11 +12,12 @@ fi
 
 if [ -f /usr/local/bin/gls ]; then
   alias ls='/usr/local/bin/gls $LS_OPTIONS'
+elif [ -f /opt/homebrew/bin/gls ]; then
+  alias ls='/opt/homebrew/bin/gls $LS_OPTIONS'
 else
   alias ls='ls $LS_OPTIONS'
 fi
 
 alias vi='vim'
-alias ls='/bin/ls $LS_OPTIONS'
 alias tree='tree -C'
 alias df='df -h'
