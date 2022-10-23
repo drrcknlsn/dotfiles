@@ -25,6 +25,7 @@ path_prepend $HOME/obin
 
 path_append $HOME/.local/bin
 path_append $HOME/bin
+path_append $HOME/.composer/vendor/bin
 path_append $HOME/.config/composer/vendor/bin
 path_append $HOME/.npm/bin
 path_append $HOME/.vim/bundle/fzf/bin
