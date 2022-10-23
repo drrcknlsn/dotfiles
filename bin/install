@@ -114,3 +114,7 @@ if [ ! -L ~/.stylelintrc.json ]; then
   [ -f ~/.stylelintrc.json ] && mv ~/.stylelintrc.json ~/.stylelintrc.json.bak
   ln -sv ~/.dotfiles/.stylelintrc.json ~/.stylelintrc.json
 fi
+
+if [ ! -f ~/.screenrc.local ]; then
+  touch ~/.screenrc.local
+fi
