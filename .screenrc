@@ -21,10 +21,12 @@ msgwait 0
 altscreen on
 
 # Use 256 colors
-#term screen-256color
-attrcolor b ".I"
-termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
-defbce on
+# See: https://stackoverflow.com/questions/6787734/strange-behavior-of-vim-color-inside-screen-with-256-colors#6918905
+term screen-256color
+# These are a hack, and shouldn't be needed if the term is set correctly.
+#attrcolor b ".I"
+#termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+#defbce on
 
 # UTF-8 all the things
 setenv LC_CTYPE en_US.UTF-8
