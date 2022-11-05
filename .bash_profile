@@ -129,5 +129,8 @@ if [ -f ~/.bash_profile.local ]; then
   . ~/.bash_profile.local
 fi
 
+# Stop MacOS's default shell nagging
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 # Automatically start/resume screen on login
 [ -z "$STY" ] && screen -U -D -RR
