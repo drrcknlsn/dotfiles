@@ -159,7 +159,8 @@ set nowritebackup
 set noswapfile
 
 " Map paste mode, which disables auto-indentation and such
-set pastetoggle=[12~
+"set pastetoggle=[12~
+set pastetoggle=<F2>
 
 " Help with file type recognition
 autocmd BufNewFile,BufRead .eslintrc set ft=json
