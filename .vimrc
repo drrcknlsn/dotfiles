@@ -198,6 +198,11 @@ let g:closetag_html_style=1
 "                                                                              ^                                       ^
 "                                                                             80                                     120
 
+let g:php_version_id = 80100
+let g:php_html_load = 0
+let g:php_html_in_heredoc = 0
+let g:php_html_in_nowdoc = 0
+
 """""""""""""""
 "             "
 "  Lightline  "
@@ -211,7 +216,7 @@ let g:lightline = {
   \ },
   \ 'active': {
   \   'left': [['mode', 'paste'], ['readonly', 'absolutepath', 'charvalue']],
-  \   'right': [['linter_errors', 'linter_warnings', 'linter_ok'], ['lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype']]
+  \   'right': [['linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok'], ['lineinfo'], ['percent'], ['fileformat', 'fileencoding', 'filetype']]
   \ },
   \ 'component': {
   \   'charvalue': '[%b/0x%B]'
@@ -219,19 +224,39 @@ let g:lightline = {
   \ }
 
 let g:lightline.component_expand = {
+  \ 'linter_checking': 'lightline#ale#checking',
+  \ 'linter_infos': 'lightline#ale#infos',
   \ 'linter_warnings': 'lightline#ale#warnings',
   \ 'linter_errors': 'lightline#ale#errors',
-  \ 'linter_ok': 'lightline#ale#ok'
+  \ 'linter_ok': 'lightline#ale#ok',
   \ }
 
 let g:lightline.component_type = {
+  \ 'linter_checking': 'right',
+  \ 'linter_infos': 'right',
   \ 'linter_warnings': 'warning',
-  \ 'linter_errors': 'error'
+  \ 'linter_errors': 'error',
+  \ 'linter_ok': 'right',
   \ }
 
+let g:lightline#ale#indicator_checking = '…' " U+2026
+"let g:lightline#ale#indicator_infos = 'ⓘ' " U+24D8
+let g:lightline#ale#indicator_infos = 'i'
 let g:lightline#ale#indicator_warnings = 'Δ' " U+0394
+"let g:lightline#ale#indicator_errors = '☠' " U+2620
 let g:lightline#ale#indicator_errors = '✘' " U+2718
-let g:lightline#ale#indicator_ok = '✔' " U+2714
+"let g:lightline#ale#indicator_errors = '✗' " U+2717
+"let g:lightline#ale#indicator_ok = '☺' " U+263A
+"let g:lightline#ale#indicator_ok = '✔' " U+2714
+let g:lightline#ale#indicator_ok = '✓' " U+2713
+
+" For patched fonts (FontAwesome icons)
+" https://github.com/maximbaz/lightline-ale#using-icons-as-indicators
+"let g:lightline#ale#indicator_checking = "\uf110"
+"let g:lightline#ale#indicator_infos = "\uf129"
+"let g:lightline#ale#indicator_warnings = "\uf071"
+"let g:lightline#ale#indicator_errors = "\uf05e"
+"let g:lightline#ale#indicator_ok = "\uf00c"
 
 " Don't show the mode (shown by lightline)
 set noshowmode
@@ -257,6 +282,7 @@ nnoremap <leader>f :ALEFix<cr>
 nnoremap <leader>n :ALENext<cr>
 nnoremap <leader>p :ALEPrevious<cr>
 nnoremap <leader>d :ALEGoToDefinition<cr>
+nnoremap <leader>r :ALEFindReferences<cr>
 nnoremap <leader>i :ALEHover<cr>
 
 let g:ale_fixers = {
@@ -266,8 +292,9 @@ let g:ale_fixers = {
     \ }
 let g:ale_list_window_size = 5
 let g:ale_sign_column_always = 1
-let g:ale_sign_error = '✘' " U+2718
 let g:ale_sign_warning = 'Δ' " U+0394
+let g:ale_sign_error = '✘' " U+2718
+"let g:ale_sign_error = '✗' " U+2717
 let g:ale_echo_msg_format = '[%linter%] %s'
 
 highlight ALEErrorSign ctermbg=red ctermfg=black
