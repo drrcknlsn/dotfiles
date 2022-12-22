@@ -25,15 +25,39 @@ fi
 composer global config -q minimum-stability dev
 composer global config -q prefer-stable true
 
-# Install PsySH
-package_name=psy/psysh
-composer global show -D 2>/dev/null | grep -q ^$package_name
-package_installed=$?
+function install_composer_dep() {
+  package_name=$1
+  composer global show -D 2>/dev/null | grep -q ^$package_name
+  package_installed=$?
 
-if [ $package_installed -eq 1 ]; then
-  composer global require $package_name
-fi
+  if [ $package_installed -eq 1 ]; then
+    echo "Installing $package_name..."
+    composer global require $package_name
+  else
+    echo "Already installed: $package_name"
+  fi
+}
 
+function install_npm_dep() {
+  package_name=$1
+  npm list --depth 0 -g $package_name >/dev/null
+  package_installed=$?
+
+  if [ $package_installed -eq 1 ]; then
+    echo "Installing $package_name..."
+    npm install -g $package_name
+  else
+    echo "Already installed: $package_name"
+  fi
+}
+
+install_composer_dep psy/psysh
+install_composer_dep phpstan/phpstan
+install_composer_dep squizlabs/php_codesniffer
+#install_composer_dep felixfbecker/language-server
+#install_composer_dep phpactor/phpactor
+
+# Download PHP manual stubs for PsySH
 php_docs_db_dir=$HOME/.local/share/psysh
 php_docs_db_path=$php_docs_db_dir/php_manual.sqlite
 
@@ -42,72 +66,9 @@ if ! [ -f $php_docs_db_path ]; then
   wget -O $php_docs_db_path http://psysh.org/manual/en/php_manual.sqlite
 fi
 
-# Install PHPStan
-package_name=phpstan/phpstan
-composer global show -D 2>/dev/null | grep -q ^$package_name
-package_installed=$?
+# Parse stubs for PHP Language Server
+#composer run-script --working-dir=$HOME/.config/composer/vendor/felixfbecker/language-server/ parse-stubs
 
-if [ $package_installed -eq 1 ]; then
-  echo "Installing $package_name..."
-  composer global require $package_name
-else
-  echo "Already installed: $package_name"
-fi
-
-# Install PHP_CodeSniffer
-package_name=squizlabs/php_codesniffer
-composer global show -D 2>/dev/null | grep -q ^$package_name
-package_installed=$?
-
-if [ $package_installed -eq 1 ]; then
-  echo "Installing $package_name..."
-  composer global require $package_name
-else
-  echo "Already installed: $package_name"
-fi
-
-# Install PHP Language Server
-package_name=felixfbecker/language-server
-composer global show -D 2>/dev/null | grep -q ^$package_name
-package_installed=$?
-
-if [ $package_installed -eq 1 ]; then
-  echo "Installing $package_name..."
-  composer global require $package_name
-  composer run-script --working-dir=$HOME/.config/composer/vendor/felixfbecker/language-server/ parse-stubs
-else
-  echo "Already installed: $package_name"
-fi
-
-package_name=eslint
-npm list --depth 0 -g $package_name >/dev/null
-package_installed=$?
-
-if [ $package_installed -eq 1 ]; then
-  echo "Installing $package_name..."
-  npm install -g $package_name
-else
-  echo "Already installed: $package_name"
-fi
-
-package_name=jsonlint
-npm list --depth 0 -g $package_name >/dev/null
-package_installed=$?
-
-if [ $package_installed -eq 1 ]; then
-  echo "Installing $package_name..."
-  npm install -g $package_name
-else
-  echo "Already installed: $package_name"
-fi
-
-package_name=stylelint
-npm list --depth 0 -g $package_name >/dev/null
-package_installed=$?
-
-if [ $package_installed -eq 1 ]; then
-  echo "Installing $package_name..."
-  npm install -g $package_name
-else
-  echo "Already installed: $package_name"
-fi
+install_npm_dep eslint
+install_npm_dep jsonlint
+install_npm_dep stylelint
