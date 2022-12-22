@@ -41,7 +41,7 @@ if [ ! -d ~/.vim/bundle/vim-repeat ]; then
 fi
 
 if [ ! -d ~/.vim/bundle/ale ]; then
-  git clone https://github.com/w0rp/ale.git
+  git clone https://github.com/dense-analysis/ale.git
 fi
 
 if [ ! -d ~/.vim/bundle/lightline-ale ]; then

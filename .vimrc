@@ -247,11 +247,11 @@ set showtabline=2
 let g:PHP_vintage_case_default_indent = 1
 let g:PHP_noArrowMatching = 1
 
-""""""""""""""
-"            "
-"  w0rp/ale  "
-"            "
-""""""""""""""
+""""""""""""""""""""""""
+"                      "
+"  dense-analysis/ale  "
+"                      "
+""""""""""""""""""""""""
 
 nnoremap <leader>f :ALEFix<cr>
 nnoremap <leader>n :ALENext<cr>
