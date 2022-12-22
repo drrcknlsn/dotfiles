@@ -256,12 +256,15 @@ let g:PHP_noArrowMatching = 1
 nnoremap <leader>f :ALEFix<cr>
 nnoremap <leader>n :ALENext<cr>
 nnoremap <leader>p :ALEPrevious<cr>
+nnoremap <leader>d :ALEGoToDefinition<cr>
+nnoremap <leader>i :ALEHover<cr>
 
 let g:ale_fixers = {
     \ 'javascript': ['eslint'],
     \ 'php': ['phpcbf'],
     \ 'scss': ['stylelint']
     \ }
+let g:ale_list_window_size = 5
 let g:ale_sign_column_always = 1
 let g:ale_sign_error = '✘' " U+2718
 let g:ale_sign_warning = 'Δ' " U+0394
