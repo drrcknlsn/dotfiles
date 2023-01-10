@@ -40,6 +40,10 @@ if [ ! -d ~/.vim/bundle/vim-repeat ]; then
   git clone https://github.com/tpope/vim-repeat.git
 fi
 
+if [ ! -d ~/.vim/bundle/vim-characterize ]; then
+  git clone https://github.com/tpope/vim-characterize.git
+fi
+
 if [ ! -d ~/.vim/bundle/ale ]; then
   git clone https://github.com/dense-analysis/ale.git
 fi
