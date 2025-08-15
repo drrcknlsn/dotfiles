@@ -90,7 +90,7 @@ export LS_OPTIONS
 CLICOLOR=1
 export CLICOLOR
 
-EDITOR=$(which vim)
+EDITOR=$(which nvim)
 export EDITOR
 
 function update_tlds() {

@@ -18,6 +18,6 @@ else
   alias ls='ls $LS_OPTIONS'
 fi
 
-alias vi='vim'
+alias vi='nvim'
 alias tree='tree -C'
 alias df='df -h'
