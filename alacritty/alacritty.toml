@@ -1,0 +1,42 @@
+[general]
+
+import = [
+  #"~/.config/alacritty/themes/dracula.toml"
+  #"~/.config/alacritty/themes/catppuccin-macchiato.toml"
+  "~/.config/alacritty/themes/catppuccin-mocha.toml"
+]
+
+[env]
+
+#TERM = "xterm-256color"
+
+[window]
+
+#opacity = 0.5
+#blur = true
+startup_mode = "Maximized"
+
+[font]
+
+normal = { family = "FiraMono Nerd Font", style = "Regular" }
+bold = { family = "FiraMono Nerd Font", style = "Regular" }
+italic = { family = "FiraMono Nerd Font", style = "Regular" }
+bold_italic = { family = "FiraMono Nerd Font", style = "Regular" }
+size = 17
+
+[colors]
+
+draw_bold_text_with_bright_colors = true
+
+[mouse]
+
+hide_when_typing = true
+
+[keyboard]
+
+bindings = [
+  { key = "h", mods = "Command", action = "ReceiveChar" },
+  { key = "j", mods = "Command", action = "ReceiveChar" },
+  { key = "k", mods = "Command", action = "ReceiveChar" },
+  { key = "l", mods = "Command", action = "ReceiveChar" },
+]
