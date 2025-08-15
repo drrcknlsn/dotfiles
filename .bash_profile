@@ -129,6 +129,8 @@ if [ -f ~/.bash_profile.local ]; then
   . ~/.bash_profile.local
 fi
 
+export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
+
 # Stop MacOS's default shell nagging
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
