@@ -69,13 +69,13 @@ function set_prompt() {
   }
 
   PS1="\[$reset\]"
-  PS1+="\[$bgreen\]["
-  PS1+="\[$bwhite\]\u"
+  PS1+="\[$bblack\]["
+  PS1+="\[$bblue\]\u"
   PS1+="\[$bblack\]@"
-  PS1+="\[$white\]\h "
-  PS1+="\[$bblack\]\W"
-  PS1+="\$(prompt_git \"\[$bcyan\]\" \"\[$bred\]\")"
-  PS1+="\[$bgreen\]]\\$"
+  PS1+="\[$bwhite\]\h "
+  PS1+="\[$byellow\]\W"
+  PS1+="\$(prompt_git \"\[$bblue\]\" \"\[$bred\]\")"
+  PS1+="\[$bblack\]]\\$"
   PS1+="\[$reset\] "
 
   export PS1
