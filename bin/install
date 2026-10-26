@@ -1,131 +1,113 @@
 #!/usr/bin/env bash
 
-mkdir -p ~/.vim/bundle
+dotlink() {
+  if [[ $# -ne 1 || -z "$1" ]]; then
+    printf 'Usage: dotlink PATH_WITHIN_HOME\n' >&2
+    return 2
+  fi
 
-cd ~/.vim/bundle
+  local rel src dst parent backup stamp n
 
-if [ ! -d ~/.vim/bundle/lightline.vim ]; then
-  git clone https://github.com/itchyny/lightline.vim.git
-fi
+  # Accept either an absolute path under $HOME or a home-relative path.
+  case "$1" in
+    "$HOME"/*) rel=${1#"$HOME"/} ;;
+    /*)
+      printf 'Path must be inside %s: %s\n' "$HOME" "$1" >&2
+      return 2
+      ;;
+    *) rel=$1 ;;
+  esac
 
-if [ ! -d ~/.vim/bundle/vim-visual-star-search ]; then
-  git clone https://github.com/nelstrom/vim-visual-star-search.git
-fi
+  # Reject paths that could escape $HOME or refer to the dotfiles repo itself.
+  case "/$rel/" in
+    */../*)
+      printf 'Path must not contain "..": %s\n' "$1" >&2
+      return 2
+      ;;
+  esac
+  case "$rel" in
+    .dotfiles|.dotfiles/*)
+      printf 'Path must not be inside the .dotfiles directory: %s\n' "$1" >&2
+      return 2
+      ;;
+  esac
 
-if [ ! -d ~/.vim/bundle/Apprentice ]; then
-  git clone https://github.com/romainl/Apprentice.git
-fi
+  src="$HOME/.dotfiles/$rel"
+  dst="$HOME/$rel"
+  parent=${dst%/*}
 
-if [ ! -d ~/.vim/bundle/vim-polyglot ]; then
-  git clone https://github.com/sheerun/vim-polyglot.git
-fi
+  if [[ ! -f "$src" && ! -d "$src" ]]; then
+    printf 'Source is not an existing file or directory: %s\n' "$src" >&2
+    return 1
+  fi
 
-if [ ! -d ~/.vim/bundle/php-vim-syntax ]; then
-  git clone https://github.com/TysonAndre/php-vim-syntax.git
-fi
+  # Make repeated calls harmless when this exact link already exists.
+  if [[ -L "$dst" && "$(readlink "$dst")" == "$src" ]]; then
+    printf 'Already linked: %s -> %s\n' "$dst" "$src"
+    return 0
+  fi
 
-if [ ! -d ~/.vim/bundle/vim-css3-syntax ]; then
-  git clone https://github.com/hail2u/vim-css3-syntax.git
-fi
+  mkdir -p -- "$parent" || return 1
 
-if [ ! -d ~/.vim/bundle/vim-pathogen ]; then
-  git clone https://github.com/tpope/vim-pathogen.git
-fi
+  backup=""
+  if [[ -e "$dst" || -L "$dst" ]]; then
+    if [[ ! -f "$dst" && ! -d "$dst" && ! -L "$dst" ]]; then
+      printf 'Target is not a regular file, directory, or symlink: %s\n' "$dst" >&2
+      return 1
+    fi
 
-if [ ! -d ~/.vim/bundle/vim-surround ]; then
-  git clone https://github.com/tpope/vim-surround.git
-fi
+    stamp=$(date +%Y%m%d-%H%M%S) || return 1
+    backup="$dst.bak.$stamp"
+    n=1
+    while [[ -e "$backup" || -L "$backup" ]]; do
+      backup="$dst.bak.$stamp.$n"
+      n=$((n + 1))
+    done
 
-if [ ! -d ~/.vim/bundle/vim-repeat ]; then
-  git clone https://github.com/tpope/vim-repeat.git
-fi
+    mv -- "$dst" "$backup" || return 1
+    printf 'Moved existing target to %s\n' "$backup"
+  fi
 
-if [ ! -d ~/.vim/bundle/vim-characterize ]; then
-  git clone https://github.com/tpope/vim-characterize.git
-fi
+  if ! ln -s -- "$src" "$dst"; then
+    printf 'Could not create symlink: %s\n' "$dst" >&2
+    if [[ -n "$backup" ]]; then
+      mv -- "$backup" "$dst" ||
+        printf 'Could not restore backup: %s\n' "$backup" >&2
+    fi
+    return 1
+  fi
 
-if [ ! -d ~/.vim/bundle/ale ]; then
-  git clone https://github.com/dense-analysis/ale.git
-fi
+  printf 'Linked %s -> %s\n' "$dst" "$src"
+}
 
-if [ ! -d ~/.vim/bundle/lightline-ale ]; then
-  git clone https://github.com/maximbaz/lightline-ale.git
-fi
+# if [ ! -d ~/.vim/bundle/fzf ]; then
+#   git clone https://github.com/junegunn/fzf.git
+#   ~/.vim/bundle/fzf/install \
+#     --no-key-bindings \
+#     --no-completion \
+#     --no-update-rc
+#   . ~/.fzf.bash
+# fi
 
-if [ ! -d ~/.vim/bundle/nerdcommenter ]; then
-  git clone https://github.com/scrooloose/nerdcommenter.git
-fi
+# if [ ! -d ~/.vim/bundle/fzf.vim ]; then
+#   git clone https://github.com/junegunn/fzf.vim.git
+# fi
 
-if [ ! -d ~/.vim/bundle/PHP-Indenting-for-VIm ]; then
-  git clone https://github.com/2072/PHP-Indenting-for-VIm.git
-fi
+dotlink "$HOME/.bash_profile" || exit 1
+dotlink "$HOME/.bashrc" || exit 1
+dotlink "$HOME/.eslintrc" || exit 1
+dotlink "$HOME/.gitconfig" || exit 1
+dotlink "$HOME/.npmrc" || exit 1
+dotlink "$HOME/.ripgreprc" || exit 1
+dotlink "$HOME/.screenrc" || exit 1
+dotlink "$HOME/.stylelintrc.json" || exit 1
+dotlink "$HOME/.vimrc" || exit 1
 
-if [ ! -d ~/.vim/bundle/editorconfig-vim ]; then
-  git clone https://github.com/editorconfig/editorconfig-vim.git
-fi
+dotlink "$HOME/.config/alacritty" || exit 1
+dotlink "$HOME/.config/nvim" || exit 1
 
-if [ ! -d ~/.vim/bundle/vim-easymotion ]; then
-  git clone https://github.com/easymotion/vim-easymotion.git
-fi
-
-if [ ! -d ~/.vim/bundle/fzf ]; then
-  git clone https://github.com/junegunn/fzf.git
-  ~/.vim/bundle/fzf/install \
-    --no-key-bindings \
-    --no-completion \
-    --no-update-rc
-  . ~/.fzf.bash
-fi
-
-if [ ! -d ~/.vim/bundle/fzf.vim ]; then
-  git clone https://github.com/junegunn/fzf.vim.git
-fi
-
-if [ ! -L ~/.vimrc ]; then
-  [ -f ~/.vimrc ] && mv ~/.vimrc ~/.vimrc.bak
-  ln -sv ~/.dotfiles/.vimrc ~/.vimrc
-fi
-
-if [ ! -L ~/.gitconfig ]; then
-  [ -f ~/.gitconfig ] && mv ~/.gitconfig ~/.gitconfig.bak
-  ln -sv ~/.dotfiles/.gitconfig ~/.gitconfig
-fi
-
-if [ ! -L ~/.bash_profile ]; then
-  [ -f ~/.bash_profile ] && mv ~/.bash_profile ~/.bash_profile.bak
-  ln -sv ~/.dotfiles/.bash_profile ~/.bash_profile
-  . ~/.bash_profile
-fi
-
-if [ ! -L ~/.bashrc ]; then
-  [ -f ~/.bashrc ] && mv ~/.bashrc ~/.bashrc.bak
-  ln -sv ~/.dotfiles/.bashrc ~/.bashrc
-  . ~/.bashrc
-fi
-
-if [ ! -L ~/.screenrc ]; then
-  [ -f ~/.screenrc ] && mv ~/.screenrc ~/.screenrc.bak
-  ln -sv ~/.dotfiles/.screenrc ~/.screenrc
-fi
-
-if [ ! -L ~/.eslintrc ]; then
-  [ -f ~/.eslintrc ] && mv ~/.eslintrc ~/.eslintrc.bak
-  ln -sv ~/.dotfiles/.eslintrc ~/.eslintrc
-fi
-
-if [ ! -L ~/.npmrc ]; then
-  [ -f ~/.npmrc ] && mv ~/.npmrc ~/.npmrc.bak
-  ln -sv ~/.dotfiles/.npmrc ~/.npmrc
-fi
-
-if [ ! -L ~/.ripgreprc ]; then
-  [ -f ~/.ripgreprc ] && mv ~/.ripgreprc ~/.ripgreprc.bak
-  ln -sv ~/.dotfiles/.ripgreprc ~/.ripgreprc
-fi
-
-if [ ! -L ~/.stylelintrc.json ]; then
-  [ -f ~/.stylelintrc.json ] && mv ~/.stylelintrc.json ~/.stylelintrc.json.bak
-  ln -sv ~/.dotfiles/.stylelintrc.json ~/.stylelintrc.json
+if [ ! -f ~/.gitconfig.local ]; then
+  touch ~/.gitconfig.local
 fi
 
 if [ ! -f ~/.screenrc.local ]; then
