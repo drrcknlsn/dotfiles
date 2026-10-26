@@ -118,6 +118,11 @@ if [ ! -L ~/.npmrc ]; then
   ln -sv ~/.dotfiles/.npmrc ~/.npmrc
 fi
 
+if [ ! -L ~/.ripgreprc ]; then
+  [ -f ~/.ripgreprc ] && mv ~/.ripgreprc ~/.ripgreprc.bak
+  ln -sv ~/.dotfiles/.ripgreprc ~/.ripgreprc
+fi
+
 if [ ! -L ~/.stylelintrc.json ]; then
   [ -f ~/.stylelintrc.json ] && mv ~/.stylelintrc.json ~/.stylelintrc.json.bak
   ln -sv ~/.dotfiles/.stylelintrc.json ~/.stylelintrc.json
