@@ -7,7 +7,7 @@ My dot files.
 
 Install prerequisites:
 ```
-brew install --cask alacritty
+brew install ghostty
 brew install gh
 ```
 

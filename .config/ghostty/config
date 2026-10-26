@@ -1,0 +1,13 @@
+theme = Catppuccin Mocha
+
+font-size = 15
+
+background-opacity = 0.95
+background-blur = true
+
+window-padding-x = 16
+window-padding-y = 16
+window-padding-balance = true
+window-padding-color = background
+
+quit-after-last-window-closed = true
