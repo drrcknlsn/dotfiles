@@ -17,8 +17,6 @@ vim.wo.signcolumn = 'number'
 
 -- Convert tabs to equivalent # of space characters (default: false)
 vim.o.expandtab = true
--- ???
-vim.o.smarttab = true
 
 local chars_per_indent = 4
 
@@ -30,10 +28,6 @@ vim.o.tabstop = chars_per_indent
 vim.o.softtabstop = chars_per_indent
 -- Indent new lines (default: true)
 vim.o.autoindent = true
--- ???
-vim.o.smartindent = true
--- ???
-vim.o.cindent = true
 
 vim.o.colorcolumn = '80'
 

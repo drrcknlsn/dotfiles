@@ -2,6 +2,7 @@ require("config.options")
 require("config.keymaps")
 require("config.filetypes")
 require("config.autocommands")
+require("config.indentation")
 
 vim.diagnostic.config({
   float = {

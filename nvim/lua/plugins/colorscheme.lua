@@ -14,15 +14,20 @@ return {
     name = "catppuccin",
     priority = 1000,
     enabled = true,
-    config = function()
-      require("catppuccin").setup({
-        transparent_background = true,
-        dim_inactive = {
-          enabled = true,
-          percentage = 0.5,
-        },
-      })
-
+    opts = {
+      transparent_background = true,
+      dim_inactive = {
+        enabled = true,
+        percentage = 0.5,
+      },
+      flavour = "mocha",
+      integrations = {
+        mason = true,
+        treesitter = true,
+      },
+    },
+    config = function(_, opts)
+      require("catppuccin").setup(opts)
       vim.cmd.colorscheme("catppuccin")
     end,
   },
