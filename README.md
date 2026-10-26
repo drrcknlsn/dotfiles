@@ -3,4 +3,14 @@ My dot files.
 
 ## Install
 
-    cd ~ && git clone https://github.com/drrcknlsn/dotfiles.git .dotfiles && ~/.dotfiles/bin/install
+### macOS
+
+```
+# Install prerequisites:
+brew install --cask alacritty
+
+# Install dotfiles:
+cd ~
+git clone https://github.com/drrcknlsn/dotfiles.git .dotfiles
+~/.dotfiles/bin/install
+```
