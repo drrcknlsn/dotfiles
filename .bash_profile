@@ -135,4 +135,4 @@ export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # Automatically start/resume screen on login
-[ -z "$STY" ] && screen -U -D -RR
+#[ -z "$STY" ] && screen -U -D -RR

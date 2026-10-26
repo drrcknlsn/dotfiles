@@ -21,3 +21,4 @@ fi
 alias vi='nvim'
 alias tree='tree -C'
 alias df='df -h'
+#alias screen='/opt/homebrew/Cellar/screen/4.9.0/bin/screen-4.9.0'
