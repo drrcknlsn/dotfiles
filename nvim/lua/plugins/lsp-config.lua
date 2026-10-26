@@ -32,12 +32,26 @@ return {
     "neovim/nvim-lspconfig",
     enabled = true,
     config = function()
-      local lspconfig = require("lspconfig")
+      vim.lsp.config("lua_ls", {
+        --capabilities = capabilities,
+      })
 
-      lspconfig.eslint.setup({})
-      lspconfig.lua_ls.setup({})
-      --lspconfig.phpactor.setup({})
-      lspconfig.rust_analyzer.setup({})
+      vim.lsp.config("eslint", {
+        --capabilities = capabilities,
+      })
+
+      --vim.lsp.config("phpactor", {
+        --capabilities = capabilities,
+      --})
+
+      vim.lsp.config("rust_analyzer", {
+        --capabilities = capabilities,
+      })
+
+      vim.lsp.enable("lua_ls")
+      vim.lsp.enable("eslint")
+      --vim.lsp.enable("phpactor")
+      vim.lsp.enable("rust_analyzer")
     end,
   },
 }
