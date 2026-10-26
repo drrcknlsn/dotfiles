@@ -46,7 +46,7 @@ return {
     require('lualine').setup({
       options = {
         icons_enabled = true,
-        theme = 'catppuccin',
+        theme = 'catppuccin-nvim',
         disabled_filetypes = {
           'neo-tree',
         },
